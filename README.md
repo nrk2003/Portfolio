@@ -122,6 +122,17 @@ See [`.env.example`](.env.example).
 
 ---
 
+## Analytics (Microsoft Clarity)
+
+Heatmaps and session recordings via [`@microsoft/clarity`](https://www.npmjs.com/package/@microsoft/clarity),
+initialised in [`components/analytics/ClarityAnalytics.tsx`](src/components/analytics/ClarityAnalytics.tsx).
+
+1. Create a project at [clarity.microsoft.com](https://clarity.microsoft.com) and copy its ID (Settings → Overview).
+2. In Vercel → **Settings → Environment Variables**, add `NEXT_PUBLIC_CLARITY_PROJECT_ID` for Production, then redeploy
+   (`NEXT_PUBLIC_` values are baked in at build time).
+
+It runs only in production builds with the ID set, so local development sends nothing.
+
 ## Accessibility & SEO notes
 
 - Semantic landmarks, a skip-to-content link, visible `:focus-visible` outlines and a single `h1` per page.

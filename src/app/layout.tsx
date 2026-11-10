@@ -3,6 +3,7 @@ import { Archivo, Archivo_Black } from 'next/font/google';
 import { site } from '@/data/site';
 import { getSiteUrl } from '@/lib/site-url';
 import { RevealObserver } from '@/components/interactions/RevealObserver';
+import { ClarityAnalytics } from '@/components/analytics/ClarityAnalytics';
 import '@/styles/base.css';
 
 /*
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         {children}
         <RevealObserver />
+        <ClarityAnalytics />
         <noscript>
           <style>{'.reveal{opacity:1;transform:none}'}</style>
         </noscript>
