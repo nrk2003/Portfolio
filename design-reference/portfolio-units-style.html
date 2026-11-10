@@ -1,0 +1,2344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>nrk. — Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue-bg:#0E5FE8;
+  --blue:#1D5DEB;
+  --cream:#F2EDE2;
+  --cream-2:#EFE8DA;
+  --yellow:#F7AC1B;
+  --orange:#F04E23;
+  --red:#E3312A;
+  --green:#1CB254;
+  --purple:#A868F0;
+  --ink:#121212;
+  --display:'Archivo Black',sans-serif;
+  --sans:'Archivo',sans-serif;
+  --r-lg:26px;
+  --r-md:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background-color:var(--blue-bg);
+  background-image:
+    linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px);
+  background-size:54px 54px;
+  font-family:var(--sans);
+  color:var(--ink);
+  font-size:16px;
+  line-height:1.55;
+  padding:20px;
+}
+::selection{background:var(--ink);color:var(--yellow)}
+
+/* ================= FRAME ================= */
+.frame{
+  background:var(--cream);
+  border-radius:var(--r-lg);
+  max-width:1560px;
+  margin:0 auto;
+  display:flex;
+  gap:0;
+  overflow:clip;
+  box-shadow:0 30px 80px rgba(0,20,80,.28);
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar{
+  width:216px;flex-shrink:0;
+  padding:24px 20px;
+  position:sticky;top:20px;
+  align-self:flex-start;
+  height:calc(100vh - 40px);
+  display:flex;flex-direction:column;
+}
+.wordmark{
+  font-family:var(--display);font-size:30px;letter-spacing:-.02em;
+  line-height:1;color:var(--ink);text-decoration:none;
+}
+.wordmark small{
+  display:block;font-family:var(--sans);font-weight:600;
+  font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;margin-top:5px;
+}
+.side-nav{display:flex;flex-direction:column;gap:10px;margin-top:26px;flex:1}
+.nav-card{
+  border-radius:14px;padding:13px 14px;
+  min-height:96px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  text-decoration:none;color:var(--ink);
+  border:1.5px solid var(--ink);
+  position:relative;overflow:hidden;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+}
+.nav-card:hover{transform:translate(-3px,-3px);box-shadow:4px 4px 0 var(--ink)}
+.nav-card .top{display:flex;justify-content:space-between;align-items:flex-start;
+  font-weight:700;font-size:12px;}
+.nav-card .arr{font-size:15px;transition:transform .3s}
+.nav-card:hover .arr{transform:translate(2px,-2px)}
+.nav-card .lbl{font-weight:700;font-size:13.5px;line-height:1.25;letter-spacing:-.01em}
+.nc-1{background:var(--blue);color:#fff}
+.nc-2{background:var(--yellow)}
+.nc-3{background:var(--orange);color:#fff}
+.nc-4{background:var(--green);color:#fff}
+.nav-cta{
+  display:block;text-align:center;text-decoration:none;
+  background:var(--purple);color:var(--ink);
+  border:1.5px solid var(--ink);border-radius:100px;
+  font-weight:700;font-size:14px;padding:12px;
+  margin-top:12px;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+}
+.nav-cta:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--ink)}
+.side-foot{display:flex;gap:8px;margin-top:12px}
+.side-foot .pill{
+  background:var(--ink);color:var(--cream);
+  border-radius:100px;padding:9px 14px;
+  font-size:12px;font-weight:700;display:flex;align-items:center;gap:8px;
+  flex:1;justify-content:center;text-decoration:none;
+}
+.side-foot .pill:hover{background:var(--orange)}
+
+/* ================= CONTENT ================= */
+.content{
+  flex:1;min-width:0;
+  border-left:1.5px solid var(--ink);
+  padding:20px 22px 22px;
+}
+
+/* ---------- TICKER ---------- */
+.ticker{
+  background:var(--blue);border:1.5px solid var(--ink);
+  border-radius:100px;overflow:hidden;white-space:nowrap;
+  padding:11px 0;margin-bottom:18px;
+}
+.ticker-track{display:inline-flex;animation:tick 24s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-track span{
+  color:#fff;font-weight:700;font-size:14px;letter-spacing:.02em;
+  padding:0 22px;display:inline-flex;align-items:center;gap:44px;
+}
+.ticker-track span::after{content:'ϟ';color:#7BF04B;font-size:17px;font-weight:900}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- PANELS / SHARED ---------- */
+.panel{
+  border:1.5px solid var(--ink);border-radius:var(--r-lg);
+  margin-bottom:18px;position:relative;overflow:hidden;
+}
+.banner{
+  border:1.5px solid var(--ink);border-radius:var(--r-md);
+  padding:20px 28px;margin-bottom:18px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.banner h2{
+  font-family:var(--display);
+  font-size:clamp(24px,3.2vw,42px);
+  letter-spacing:-.02em;line-height:1;
+  text-align:center;flex:1;
+}
+.banner .dd{font-family:var(--display);font-size:clamp(18px,2.4vw,30px);animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+.b-red{background:var(--orange);color:var(--ink)}
+.b-green{background:var(--green)}
+.b-yellow{background:var(--yellow)}
+.b-purple{background:var(--purple)}
+.b-blue{background:var(--blue);color:#fff}
+
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--ink);color:var(--cream);
+  font-family:var(--sans);font-weight:700;font-size:14.5px;
+  border:1.5px solid var(--ink);border-radius:100px;
+  padding:13px 26px;text-decoration:none;cursor:pointer;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s, background .3s;
+}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 rgba(18,18,18,.35);background:var(--orange);color:var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--cream)}
+.tag{
+  display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.03em;
+  border:1.5px solid var(--ink);border-radius:100px;padding:5px 13px;
+}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}
+.reveal.d2{transition-delay:.16s}
+
+/* ---------- HERO ---------- */
+.hero{
+  display:grid;grid-template-columns:1fr 1fr;min-height:520px;
+  background:var(--cream);
+}
+.hero-copy{padding:52px 44px;display:flex;flex-direction:column;justify-content:center}
+.hero-chip{
+  display:inline-flex;align-items:center;gap:9px;width:fit-content;
+  border:1.5px solid var(--ink);border-radius:100px;
+  font-size:12.5px;font-weight:700;padding:8px 16px;margin-bottom:26px;
+  background:#fff;
+}
+.hero-chip .dot{width:9px;height:9px;border-radius:2px;background:var(--green);animation:blink 2s steps(2) infinite}
+@keyframes blink{50%{opacity:.25}}
+.hero h1{
+  font-family:var(--display);
+  font-size:clamp(38px,4.6vw,64px);
+  line-height:1.02;letter-spacing:-.02em;
+}
+.hero h1 .hl{
+  display:inline-block;background:var(--yellow);
+  border-radius:10px;padding:0 12px;
+  border:1.5px solid var(--ink);
+  transform:rotate(-1.5deg);
+}
+.hero p{margin-top:22px;max-width:44ch;font-size:16.5px;font-weight:500}
+.hero-actions{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.hero-visual{
+  border-left:1.5px solid var(--ink);
+  position:relative;background:var(--cream-2);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.hero-visual svg{width:100%;height:100%;display:block}
+
+/* ---------- KINETIC STRIP ---------- */
+.kinetic{
+  background:var(--red);height:280px;
+  display:flex;align-items:center;position:relative;overflow:hidden;
+}
+.kinetic .pixel-smiley{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:230px;height:230px;opacity:.95;
+}
+.kinetic-text{
+  font-family:var(--display);
+  font-size:clamp(60px,9vw,130px);
+  color:var(--ink);white-space:nowrap;
+  letter-spacing:-.02em;
+  position:relative;will-change:transform;
+}
+
+/* ---------- PROJECTS ---------- */
+.proj-grid{display:flex;flex-direction:column;gap:18px}
+.proj{
+  border:1.5px solid var(--ink);border-radius:var(--r-lg);
+  display:grid;grid-template-columns:1.05fr .95fr;
+  overflow:hidden;background:#fff;
+}
+.proj:nth-child(even){grid-template-columns:.95fr 1.05fr}
+.proj:nth-child(even) .proj-visual{order:2;border-left:1.5px solid var(--ink);border-right:none}
+.proj-visual{
+  border-right:1.5px solid var(--ink);
+  min-height:340px;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.proj-visual .big-num{
+  font-family:var(--display);font-size:170px;line-height:1;
+  color:rgba(255,255,255,.28);position:absolute;
+  top:14px;left:22px;
+}
+.pjv-1{background:var(--blue)}
+.pjv-2{background:var(--green)}
+.pjv-3{background:var(--purple)}
+.proj-visual .mock{
+  width:66%;background:var(--cream);
+  border:1.5px solid var(--ink);border-radius:14px;
+  padding:12px;transform:rotate(-2deg);
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:6px 6px 0 rgba(18,18,18,.3);
+  position:relative;z-index:2;
+}
+.proj:hover .mock{transform:rotate(0deg) scale(1.03)}
+.mock .m-bar{height:9px;border-radius:100px;background:var(--ink);opacity:.85;margin-bottom:8px;width:52%}
+.mock .m-row{display:flex;gap:8px;margin-top:8px}
+.mock .m-cell{flex:1;height:38px;border-radius:8px;border:1.5px solid var(--ink)}
+.pjv-1 .m-cell:nth-child(1){background:var(--yellow)}
+.pjv-1 .m-cell:nth-child(2){background:var(--orange)}
+.pjv-1 .m-cell:nth-child(3){background:var(--green)}
+.pjv-2 .m-cell:nth-child(1){background:var(--purple)}
+.pjv-2 .m-cell:nth-child(2){background:var(--yellow)}
+.pjv-2 .m-cell:nth-child(3){background:var(--blue)}
+.pjv-3 .m-cell:nth-child(1){background:var(--green)}
+.pjv-3 .m-cell:nth-child(2){background:var(--red)}
+.pjv-3 .m-cell:nth-child(3){background:var(--yellow)}
+.mock .m-wide{height:52px;border-radius:8px;border:1.5px solid var(--ink);margin-top:8px;background:#fff;
+  display:flex;align-items:flex-end;gap:6px;padding:8px}
+.mock .m-wide i{flex:1;background:var(--ink);border-radius:3px 3px 0 0;display:block}
+.proj-info{padding:38px 36px;display:flex;flex-direction:column;justify-content:center;background:var(--cream)}
+.proj-info .kick{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
+.proj-info h3{
+  font-family:var(--display);font-size:clamp(22px,2.4vw,32px);
+  line-height:1.12;letter-spacing:-.015em;margin-bottom:14px;
+}
+.proj-info p{font-size:15px;font-weight:500;margin-bottom:18px;max-width:48ch}
+.proj-info .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+
+/* ---------- PLAYGROUND ---------- */
+.play-wrap{background:var(--ink);padding:22px;border-radius:var(--r-lg);border:1.5px solid var(--ink)}
+.play-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.play-card{
+  aspect-ratio:1;border-radius:16px;border:1.5px solid var(--ink);
+  position:relative;overflow:hidden;cursor:pointer;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:18px;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+.play-card:hover{transform:translateY(-6px) rotate(-1deg)}
+.play-card.wide{grid-column:span 2;aspect-ratio:auto}
+.play-card h4{font-family:var(--display);font-size:17px;letter-spacing:-.01em;line-height:1.15;position:relative;z-index:2}
+.play-card small{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.75;position:relative;z-index:2;margin-top:4px}
+.pg-1{background:var(--yellow)}
+.pg-2{background:var(--purple)}
+.pg-3{background:var(--green);color:#fff}
+.pg-4{background:var(--blue);color:#fff}
+.pg-5{background:var(--red);color:#fff}
+.pg-6{background:var(--cream)}
+.pg-art{position:absolute;inset:0;z-index:1}
+.pg-1 .ball{
+  position:absolute;width:64px;height:64px;border-radius:50%;
+  background:var(--red);border:1.5px solid var(--ink);
+  left:50%;top:16%;transform:translateX(-50%);
+  transition:transform .5s cubic-bezier(.34,1.56,.64,1);
+}
+.pg-1:hover .ball{transform:translateX(-50%) translateY(26px) scaleY(.82)}
+.pg-2 .px-grid{position:absolute;inset:16px 16px 44%;
+  background-image:
+    linear-gradient(rgba(18,18,18,.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18,18,18,.35) 1px, transparent 1px);
+  background-size:16px 16px;
+}
+.pg-2 .px-cell{position:absolute;width:15px;height:15px;transition:opacity .3s}
+.pg-3 .cursor{
+  position:absolute;width:14px;height:14px;background:var(--yellow);
+  border:1.5px solid var(--ink);top:26%;left:30%;
+  animation:curMove 4s ease-in-out infinite;
+}
+@keyframes curMove{
+  0%,100%{top:26%;left:30%}25%{top:20%;left:60%}
+  50%{top:44%;left:52%}75%{top:40%;left:22%}
+}
+.pg-4 .eq{position:absolute;left:20px;right:20px;top:24%;display:flex;gap:7px;align-items:flex-end;height:64px}
+.pg-4 .eq i{flex:1;background:#fff;border-radius:3px;height:30%;transition:height .35s ease}
+.pg-4:hover .eq i:nth-child(odd){height:90%}
+.pg-4:hover .eq i:nth-child(even){height:52%}
+.pg-5 .smile-mini{position:absolute;top:12%;left:50%;transform:translateX(-50%);width:96px;height:96px}
+.pg-6 .aa{
+  position:absolute;top:4%;left:0;right:0;text-align:center;
+  font-family:var(--display);font-size:96px;color:rgba(18,18,18,.12);
+  transition:color .3s,transform .4s;
+}
+.pg-6:hover .aa{color:var(--orange);transform:rotate(-4deg)}
+
+/* ---------- WRITING ---------- */
+.article-list{background:#fff;border:1.5px solid var(--ink);border-radius:var(--r-lg);overflow:hidden}
+.article{
+  display:grid;grid-template-columns:64px 1fr auto;gap:26px;align-items:center;
+  padding:26px 30px;text-decoration:none;color:var(--ink);
+  border-bottom:1.5px solid var(--ink);
+  transition:background .25s;
+  background:#fff;
+}
+.article:last-child{border-bottom:none}
+.article:hover{background:var(--yellow)}
+.article .a-num{
+  width:44px;height:44px;border-radius:50%;
+  border:1.5px solid var(--ink);background:var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:15px;
+}
+.article:hover .a-num{background:var(--ink);color:var(--yellow)}
+.article h4{font-family:var(--display);font-size:clamp(17px,1.9vw,23px);letter-spacing:-.01em;margin-bottom:4px;line-height:1.2}
+.article p{font-size:14px;font-weight:500;max-width:62ch}
+.article .a-meta{text-align:right;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.article .a-meta b{display:block;margin-bottom:5px}
+.article .a-meta b span{background:var(--purple);border:1.5px solid var(--ink);border-radius:100px;padding:4px 11px;display:inline-block}
+
+/* ---------- ABOUT ---------- */
+.belief-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}
+.belief{
+  border:1.5px solid var(--ink);border-radius:var(--r-md);
+  padding:26px 24px;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+}
+.belief:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--ink)}
+.belief .b-pill{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1.5px solid var(--ink);border-radius:100px;
+  background:rgba(255,255,255,.55);
+  font-weight:700;font-size:14px;padding:8px 16px 8px 8px;
+  margin-bottom:16px;
+}
+.belief .b-pill .n{
+  width:26px;height:26px;border-radius:50%;
+  border:1.5px solid var(--ink);background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:12px;
+}
+.belief h4{font-family:var(--display);font-size:19px;margin-bottom:8px;letter-spacing:-.01em}
+.belief p{font-size:14px;font-weight:500}
+.bl-1{background:var(--yellow)}
+.bl-2{background:var(--green)}
+.bl-3{background:#4DA6FF}
+.about-split{
+  display:grid;grid-template-columns:.85fr 1.15fr;gap:0;
+  background:#fff;border:1.5px solid var(--ink);border-radius:var(--r-lg);overflow:hidden;
+}
+.about-photo{
+  background:var(--blue);border-right:1.5px solid var(--ink);
+  position:relative;min-height:400px;
+  display:flex;align-items:center;justify-content:center;
+}
+.about-photo .face{width:210px;height:210px}
+.about-photo .loc{
+  position:absolute;bottom:18px;left:18px;right:18px;
+  background:var(--cream);border:1.5px solid var(--ink);border-radius:100px;
+  font-size:12.5px;font-weight:700;padding:10px 16px;text-align:center;
+}
+.about-copy{padding:44px 42px;display:flex;flex-direction:column;justify-content:center;background:var(--cream)}
+.about-copy h3{font-family:var(--display);font-size:clamp(24px,3vw,38px);line-height:1.08;letter-spacing:-.02em}
+.about-copy h3 .hl{background:var(--purple);border:1.5px solid var(--ink);border-radius:8px;padding:0 10px;display:inline-block;transform:rotate(1.4deg)}
+.about-copy p{margin-top:18px;font-size:15.5px;font-weight:500;max-width:52ch}
+.fact-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.fact{
+  border:1.5px solid var(--ink);border-radius:14px;background:#fff;
+  padding:14px 20px;text-align:center;
+}
+.fact .n{font-family:var(--display);font-size:26px;line-height:1}
+.fact .l{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:5px}
+
+/* ---------- FOOTER / CTA ---------- */
+.cta-panel{
+  background:var(--orange);
+  padding:60px 40px 0;text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-panel .chip{
+  display:inline-block;border:1.5px solid var(--ink);border-radius:100px;
+  background:var(--cream);font-weight:700;font-size:12.5px;padding:8px 18px;
+  margin-bottom:22px;
+}
+.cta-panel h2{
+  font-family:var(--display);
+  font-size:clamp(30px,4.4vw,58px);
+  letter-spacing:-.02em;line-height:1.04;
+  max-width:20ch;margin:0 auto 30px;
+}
+.cta-panel .btn{background:var(--ink);color:var(--cream);margin-bottom:52px}
+.cta-panel .btn:hover{background:var(--purple);color:var(--ink)}
+.pixel-floor{
+  position:relative;height:190px;margin:0 -40px;
+  border-top:1.5px solid var(--ink);
+  background-image:
+    linear-gradient(rgba(18,18,18,.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18,18,18,.4) 1px, transparent 1px);
+  background-size:26px 26px;
+  overflow:hidden;
+}
+.pixel-floor .giant{
+  position:absolute;bottom:-8px;left:34px;
+  font-family:var(--display);font-size:clamp(70px,9vw,130px);
+  letter-spacing:-.02em;line-height:1;
+}
+.pixel-floor .g-right{left:auto;right:34px}
+.px-confetti{position:absolute;width:25px;height:25px}
+.foot-row{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  padding:16px 4px 0;font-size:13px;font-weight:600;
+}
+.foot-row .links{display:flex;gap:10px;flex-wrap:wrap}
+.foot-row .links a{
+  color:var(--ink);text-decoration:none;font-weight:700;
+  border:1.5px solid var(--ink);border-radius:100px;padding:7px 15px;background:#fff;
+  transition:background .25s;
+}
+.foot-row .links a:hover{background:var(--yellow)}
+
+
+/* ---------- DATA VISUALISATION ---------- */
+.viz{
+  border:1.5px solid var(--ink);border-radius:var(--r-md);
+  background:#fff;padding:24px 26px;margin:26px 0;
+}
+.viz-title{font-family:var(--display);font-size:15.5px;line-height:1.3}
+.viz-sub{font-size:12px;font-weight:600;opacity:.65;margin-top:4px;margin-bottom:20px}
+.gv-row{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:end;margin-bottom:18px;
+  padding:4px;border-radius:8px;transition:background .2s}
+.gv-row:hover{background:rgba(18,18,18,.04)}
+.gv-row:last-of-type{margin-bottom:0}
+.gv-label{font-size:13px;font-weight:600;display:block;margin-bottom:8px;line-height:1.35}
+.gv-track{height:20px;border-radius:4px;background:rgba(18,18,18,.08);overflow:hidden}
+.gv-fill{height:100%;border-radius:0 4px 4px 0;display:block}
+.gv-fill.claim{background:#1D5DEB}
+.gv-fill.reality{background:#F04E23}
+.gv-val{font-family:var(--display);font-size:26px;line-height:1;white-space:nowrap}
+.gv-legend{display:flex;gap:20px;flex-wrap:wrap;margin-top:20px;padding-top:16px;
+  border-top:1.5px solid rgba(18,18,18,.12);font-size:11.5px;font-weight:700}
+.gv-legend span{display:inline-flex;align-items:center;gap:7px}
+.gv-legend i{width:13px;height:13px;border-radius:3px;border:1.5px solid var(--ink);display:block}
+.gv-legend i.claim{background:#1D5DEB}
+.gv-legend i.reality{background:#F04E23}
+
+.statrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px;margin:26px 0}
+.stat-tile{
+  border:1.5px solid var(--ink);border-radius:var(--r-md);background:#fff;
+  padding:20px;border-top-width:6px;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+}
+.stat-tile:hover{transform:translate(-3px,-3px);box-shadow:4px 4px 0 var(--ink)}
+.stat-tile .st-n{font-family:var(--display);font-size:clamp(28px,3.2vw,38px);line-height:1}
+.stat-tile .st-l{font-size:12.5px;font-weight:600;margin-top:10px;line-height:1.45}
+.st-red{border-top-color:var(--red)}
+.st-orange{border-top-color:var(--orange)}
+.st-blue{border-top-color:var(--blue)}
+.st-purple{border-top-color:var(--purple)}
+.st-green{border-top-color:var(--green)}
+.st-yellow{border-top-color:var(--yellow)}
+
+.trapviz{display:flex;align-items:stretch;gap:14px;flex-wrap:wrap;margin:26px 0}
+.trap-stage{
+  flex:1;min-width:200px;border:1.5px solid var(--ink);border-radius:var(--r-md);
+  background:#fff;padding:24px;
+}
+.trap-stage.dark{background:var(--ink);color:var(--cream)}
+.trap-stage .ts-n{font-family:var(--display);font-size:clamp(34px,4.2vw,48px);line-height:1}
+.trap-stage.dark .ts-n{color:var(--yellow)}
+.trap-stage .ts-l{font-size:13px;font-weight:600;margin-top:12px;line-height:1.45}
+.trap-arrow{display:flex;align-items:center;font-family:var(--display);font-size:28px}
+
+.offergrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:12px;margin:26px 0}
+.offer-card{
+  border:1.5px solid var(--ink);border-radius:var(--r-md);padding:22px;
+  display:flex;flex-direction:column;gap:12px;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+}
+.offer-card:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--ink)}
+.offer-card .oc-n{
+  width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  border:1.5px solid var(--ink);background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:13px;
+}
+.offer-card p{font-size:14px;font-weight:600;margin:0;line-height:1.5}
+.oc-1{background:var(--yellow)}.oc-2{background:var(--green)}.oc-3{background:#4DA6FF}
+.oc-4{background:var(--purple)}.oc-5{background:var(--orange)}
+
+.winstri{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px;margin:26px 0}
+.win-card{border:1.5px solid var(--ink);border-radius:var(--r-md);background:#fff;padding:22px}
+.win-card .wc-tag{
+  display:inline-block;border:1.5px solid var(--ink);border-radius:100px;
+  font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 12px;margin-bottom:12px;
+}
+.win-card p{font-size:13.5px;font-weight:600;margin:0;line-height:1.5}
+.wc-student{background:var(--yellow)}
+.wc-edu{background:var(--green);color:#fff}
+.wc-industry{background:var(--blue);color:#fff}
+
+.metricgrid{display:flex;flex-direction:column;gap:10px;margin:26px 0}
+.metric-row{
+  display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:start;
+  border:1.5px solid var(--ink);border-radius:var(--r-md);background:#fff;padding:18px 20px;
+}
+.metric-row .mr-name{font-family:var(--display);font-size:16px;line-height:1.3;
+  padding-left:12px;border-left:4px solid var(--purple)}
+.metric-row .mr-how{font-size:13.5px;font-weight:600;line-height:1.5}
+.metric-row .mr-how em{font-style:normal;opacity:.65;display:block;margin-top:5px;font-size:12.5px}
+
+@media(max-width:820px){
+  .metric-row{grid-template-columns:1fr;gap:8px}
+  .trap-arrow{transform:rotate(90deg);justify-content:center;width:100%}
+  .gv-row{grid-template-columns:1fr;gap:6px}
+  .gv-val{text-align:left}
+}
+
+
+/* ================= SCENE SYSTEM (teardown style) ================= */
+.cs-progress{
+  height:6px;width:100%;flex-basis:100%;
+  background:rgba(18,18,18,.12);border-radius:100px;overflow:hidden;
+}
+.cs-progress i{display:block;height:100%;width:0%;background:var(--ink);transition:width .1s linear}
+
+.scene{
+  border:1.5px solid var(--ink);border-radius:var(--r-lg);
+  padding:0;margin-bottom:18px;overflow:hidden;
+}
+.sc-yellow{background:var(--yellow)}
+.sc-green{background:var(--green)}
+.sc-blue{background:var(--blue)}
+.sc-purple{background:var(--purple)}
+.sc-orange{background:var(--orange)}
+.sc-red{background:var(--red)}
+.sc-cream{background:var(--cream-2)}
+.sc-ink{background:var(--ink)}
+
+.scene-head{
+  display:flex;align-items:center;gap:16px;
+  padding:16px 22px;border-bottom:1.5px solid var(--ink);
+}
+.sc-num{
+  width:38px;height:38px;flex-shrink:0;border-radius:50%;
+  border:1.5px solid var(--ink);background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:14px;
+}
+.scene-head h3{font-family:var(--display);font-size:clamp(18px,2.2vw,26px);letter-spacing:-.01em;flex:1;line-height:1.15}
+.sc-tag{
+  border:1.5px solid var(--ink);border-radius:100px;background:var(--cream);
+  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 12px;white-space:nowrap;
+}
+.sc-blue .scene-head h3,.sc-green .scene-head h3,.sc-red .scene-head h3,.sc-ink .scene-head h3{color:#fff}
+
+.scene-grid{
+  display:grid;grid-template-columns:250px minmax(0,1fr) 290px;
+  gap:18px;padding:22px;align-items:start;
+}
+
+/* --- narrator --- */
+.narrator{display:flex;flex-direction:column;gap:12px;position:sticky;top:26px}
+.avatar{
+  width:84px;height:84px;flex-shrink:0;
+  border:1.5px solid var(--ink);border-radius:var(--r-md);
+  background:var(--ink);padding:9px;
+}
+.avatar svg{width:100%;height:100%;display:block}
+.bubble{
+  background:var(--cream);border:1.5px solid var(--ink);border-radius:var(--r-md);
+  padding:16px 18px;position:relative;
+  box-shadow:4px 4px 0 rgba(18,18,18,.22);
+}
+.bubble::before{
+  content:'';position:absolute;top:-9px;left:24px;
+  width:14px;height:14px;background:var(--cream);
+  border-left:1.5px solid var(--ink);border-top:1.5px solid var(--ink);
+  transform:rotate(45deg);
+}
+.bubble p{font-size:14.5px;font-weight:600;line-height:1.55;margin:0 0 10px}
+.bubble p:last-child{margin-bottom:0}
+.bubble em{font-style:normal;opacity:.6;font-size:12.5px;display:block;margin-top:2px}
+.bubble b{background:rgba(247,172,27,.55);border-radius:3px;padding:0 3px}
+
+/* --- centre stage --- */
+.stage{display:flex;flex-direction:column;gap:12px;align-items:stretch;min-width:0}
+.device{
+  width:100%;background:#fff;border:1.5px solid var(--ink);border-radius:14px;
+  box-shadow:6px 6px 0 rgba(18,18,18,.28);
+}
+.dev-bar{
+  height:28px;background:var(--ink);display:flex;align-items:center;gap:5px;padding:0 11px;
+  border-radius:12.5px 12.5px 0 0;
+}
+.dev-bar i{width:7px;height:7px;border-radius:50%;background:rgba(242,237,226,.5);display:block}
+.dev-bar span{
+  margin-left:8px;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(242,237,226,.75);
+}
+.dev-screen{position:relative;padding:16px;display:flex;flex-direction:column;gap:9px;background:#fff;border-radius:0 0 12.5px 12.5px}
+.dev-screen.tight{gap:6px}
+.ln{height:9px;border-radius:100px;background:rgba(18,18,18,.15)}
+.ln.b{filter:blur(2.2px)}
+.w95{width:95%}.w85{width:85%}.w70{width:70%}.w55{width:55%}.w40{width:40%}.w25{width:25%}
+.pcard{
+  border:1.5px solid var(--ink);border-radius:9px;background:var(--cream);
+  padding:9px 11px;display:flex;align-items:center;gap:10px;
+}
+.pcard .pn{
+  width:21px;height:21px;border-radius:50%;background:var(--ink);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-family:var(--display);font-size:9.5px;
+}
+.pcard .pl{flex:1;display:flex;flex-direction:column;gap:5px}
+.pcard.bad{background:rgba(227,49,42,.1);border-color:var(--red);border-width:2px}
+.pcard.good{background:rgba(28,178,84,.12);border-color:var(--green);border-width:2px}
+.pcard.dim{opacity:.45}
+.chatline{display:flex;gap:9px;align-items:flex-start}
+.chatline .who{
+  width:26px;height:26px;border-radius:50%;flex-shrink:0;border:1.5px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;font-size:11px;
+}
+.chatline .msg{
+  flex:1;border:1.5px solid var(--ink);border-radius:10px;padding:8px 11px;
+  background:var(--cream);display:flex;flex-direction:column;gap:5px;
+}
+.chatline.them .who{background:var(--red)}
+.chatline.me{flex-direction:row-reverse}
+.chatline.me .who{background:var(--blue)}
+.chatline.me .msg{background:#fff}
+.moodtag{
+  font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  border:1.5px solid var(--ink);border-radius:100px;padding:2px 8px;align-self:flex-start;
+}
+.mood-angry{background:var(--red);color:#fff}
+.mood-calm{background:var(--green);color:#fff}
+.mood-open{background:var(--yellow)}
+.stepper{display:flex;flex-direction:column;gap:6px}
+.step{
+  display:flex;align-items:center;gap:9px;font-size:10.5px;font-weight:700;
+  border:1.5px solid var(--ink);border-radius:100px;padding:6px 12px;background:var(--cream);
+}
+.step .sn{
+  width:17px;height:17px;border-radius:50%;background:var(--ink);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;font-size:8.5px;flex-shrink:0;
+}
+.step.on{background:var(--yellow);border-width:2px}
+.step.off{opacity:.45}
+.hotspot{
+  position:absolute;width:26px;height:26px;border-radius:50%;
+  background:var(--red);color:#fff;border:1.5px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:11px;z-index:3;
+  box-shadow:0 0 0 4px rgba(227,49,42,.22);
+}
+.hl-box{
+  position:absolute;border:2.5px solid var(--red);border-radius:9px;z-index:2;
+  background:rgba(227,49,42,.07);pointer-events:none;
+}
+.hl-box.ok{border-color:var(--green);background:rgba(28,178,84,.1)}
+.dev-cap{
+  border:1.5px solid var(--ink);border-radius:100px;background:var(--cream);
+  font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  padding:6px 13px;text-align:center;
+}
+.killrow{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}
+.killbtn{
+  border:1.5px solid var(--ink);border-radius:100px;background:var(--cream);
+  font-size:11px;font-weight:700;padding:6px 14px;position:relative;
+}
+.killbtn.killed{opacity:.5;text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2.5px}
+.forks{display:flex;flex-direction:column;gap:8px;width:100%}
+.fork{
+  border:1.5px solid var(--ink);border-radius:10px;background:var(--cream);
+  padding:10px 12px;display:flex;align-items:center;gap:10px;font-size:12px;font-weight:600;
+}
+.fork .ft{
+  font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  border:1.5px solid var(--ink);border-radius:100px;padding:3px 9px;white-space:nowrap;
+}
+
+/* --- why column --- */
+.why{display:flex;flex-direction:column;gap:12px}
+.principle{
+  background:#fff;border:1.5px solid var(--ink);border-radius:var(--r-md);padding:18px;
+  box-shadow:4px 4px 0 rgba(18,18,18,.22);
+}
+.pr-badge{
+  display:inline-block;border:1.5px solid var(--ink);border-radius:100px;
+  background:var(--yellow);font-size:9.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;padding:4px 11px;margin-bottom:11px;
+}
+.principle h4{font-family:var(--display);font-size:16px;line-height:1.25;margin-bottom:8px}
+.principle p{font-size:13px;font-weight:500;line-height:1.55;margin:0}
+.note{
+  background:var(--cream);border:1.5px solid var(--ink);border-radius:var(--r-md);
+  padding:13px 15px;display:flex;gap:11px;align-items:flex-start;
+}
+.note .nn{
+  width:21px;height:21px;border-radius:50%;background:var(--red);color:#fff;flex-shrink:0;
+  border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:9.5px;
+}
+.note p{font-size:12.5px;font-weight:600;line-height:1.5;margin:0}
+.verdict{
+  border:1.5px solid var(--ink);border-radius:var(--r-md);padding:13px 15px;
+  font-size:12.5px;font-weight:700;line-height:1.5;display:flex;gap:9px;align-items:flex-start;
+}
+.verdict.good{background:rgba(28,178,84,.16)}
+.verdict.bad{background:rgba(227,49,42,.14)}
+.verdict .vi{font-size:14px;flex-shrink:0}
+
+/* --- grade card --- */
+.gradecard{
+  background:var(--ink);color:var(--cream);
+  border:1.5px solid var(--ink);border-radius:var(--r-lg);
+  padding:34px;margin-bottom:18px;
+  display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;
+}
+.gradecard .gbox{
+  width:120px;height:120px;border-radius:var(--r-md);
+  border:1.5px solid var(--cream);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.gradecard .gbox b{font-family:var(--display);font-size:54px;line-height:1;color:var(--yellow)}
+.gradecard .gbox span{font-size:9.5px;font-weight:700;letter-spacing:.12em;margin-top:6px;opacity:.7}
+.gradecard h3{font-family:var(--display);font-size:clamp(20px,2.6vw,28px);margin-bottom:10px;line-height:1.2}
+.gradecard p{font-size:14.5px;font-weight:500;line-height:1.55;opacity:.9;margin:0 0 14px}
+.tactics{display:flex;gap:8px;flex-wrap:wrap}
+.tactic{
+  border:1.5px solid var(--cream);border-radius:100px;
+  font-size:10.5px;font-weight:700;letter-spacing:.05em;padding:5px 12px;
+}
+.tactic.hot{background:var(--yellow);color:var(--ink);border-color:var(--ink)}
+
+@media(max-width:1000px){
+  .scene-grid{grid-template-columns:1fr;gap:16px}
+  .narrator{position:static;flex-direction:row;align-items:flex-start}
+  .bubble::before{top:18px;left:-9px;border-left:1.5px solid var(--ink);border-top:none;
+    border-bottom:1.5px solid var(--ink);transform:rotate(45deg)}
+  .gradecard{grid-template-columns:1fr;gap:20px}
+}
+
+/* ================= CASE STUDY VIEW ================= */
+body.cs-open{overflow:hidden}
+.case-view{
+  position:fixed;inset:0;z-index:200;
+  background-color:var(--blue-bg);
+  background-image:
+    linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px);
+  background-size:54px 54px;
+  overflow-y:auto;padding:20px;
+  opacity:0;visibility:hidden;transform:translateY(24px);
+  transition:opacity .4s cubic-bezier(.22,1,.36,1), transform .4s cubic-bezier(.22,1,.36,1), visibility 0s .4s;
+}
+.case-view.open{
+  opacity:1;visibility:visible;transform:none;
+  transition:opacity .4s cubic-bezier(.22,1,.36,1), transform .4s cubic-bezier(.22,1,.36,1);
+}
+.cs-frame{
+  background:var(--cream);border-radius:var(--r-lg);
+  max-width:1160px;margin:0 auto;overflow:clip;
+  box-shadow:0 30px 80px rgba(0,20,80,.28);
+}
+.cs-top{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;row-gap:12px;
+  padding:16px 22px;border-bottom:1.5px solid var(--ink);
+  position:sticky;top:-20px;
+  background:var(--cream);z-index:10;
+  margin-top:-1px;
+}
+.back-btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--sans);font-weight:700;font-size:13.5px;
+  background:var(--ink);color:var(--cream);
+  border:1.5px solid var(--ink);border-radius:100px;
+  padding:10px 20px;cursor:pointer;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1), background .3s, color .3s;
+}
+.back-btn:hover{background:var(--yellow);color:var(--ink);transform:translateX(-3px)}
+.cs-crumb{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.cs-crumb em{font-style:normal;background:var(--green);border:1.5px solid var(--ink);border-radius:100px;padding:4px 11px;color:#fff}
+
+.cs-hero{padding:46px 40px 34px}
+.cs-hero .chip{
+  display:inline-block;border:1.5px solid var(--ink);border-radius:100px;
+  background:#fff;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  padding:7px 16px;margin-bottom:20px;
+}
+.cs-hero h1{
+  font-family:var(--display);
+  font-size:clamp(28px,3.8vw,50px);
+  line-height:1.06;letter-spacing:-.02em;max-width:22ch;
+}
+.cs-hero h1 .hl{background:var(--yellow);border:1.5px solid var(--ink);border-radius:8px;padding:0 10px;display:inline-block;transform:rotate(-1deg)}
+.cs-lede{margin-top:18px;font-size:16.5px;font-weight:500;max-width:58ch}
+.cs-meta{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px;
+}
+.cs-meta .m{
+  border:1.5px solid var(--ink);border-radius:14px;background:#fff;padding:14px 16px;
+}
+.cs-meta .m .k{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;opacity:.7}
+.cs-meta .m .v{font-family:var(--display);font-size:14.5px;line-height:1.25}
+
+.cs-cover{margin:0 40px;border:1.5px solid var(--ink);border-radius:var(--r-md);
+  min-height:300px;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.cs-cover .mock{width:52%;background:var(--cream);border:1.5px solid var(--ink);border-radius:14px;padding:14px;box-shadow:8px 8px 0 rgba(18,18,18,.3)}
+.cs-cover .pv-tag{position:absolute;top:16px;left:16px;background:var(--cream);border:1.5px solid var(--ink);border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px}
+
+.cs-body{padding:44px 40px}
+.cs-chapter{margin-bottom:52px}
+.cs-chapter:last-child{margin-bottom:0}
+.chapter-banner{
+  border:1.5px solid var(--ink);border-radius:var(--r-md);
+  display:flex;align-items:center;gap:18px;
+  padding:16px 22px;margin-bottom:24px;
+}
+.chapter-banner .cn{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  border:1.5px solid var(--ink);background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:14px;
+}
+.chapter-banner h2{font-family:var(--display);font-size:clamp(19px,2.4vw,28px);letter-spacing:-.01em;flex:1}
+.chapter-banner .dd{font-family:var(--display);font-size:20px;animation:bob 1.6s ease-in-out infinite}
+.ch-1{background:var(--yellow)}
+.ch-2{background:var(--orange)}
+.ch-3{background:var(--purple)}
+.ch-4{background:var(--green);color:#fff}
+.ch-4 .cn{color:var(--ink)}
+.ch-5{background:var(--blue);color:#fff}
+.ch-5 .cn{color:var(--ink)}
+.chapter-content p{font-size:15.5px;font-weight:500;max-width:66ch;margin-bottom:16px}
+.chapter-content p b{background:rgba(247,172,27,.5);border-radius:4px;padding:0 4px}
+.chapter-content .callout{
+  border:1.5px solid var(--ink);border-radius:var(--r-md);
+  background:#fff;padding:24px 28px;margin:24px 0;
+  font-family:var(--display);font-size:clamp(16px,1.9vw,21px);line-height:1.4;
+  position:relative;
+}
+.chapter-content .callout[data-label]::before{content:attr(data-label)}
+.chapter-content .callout.no-label::before{display:none}
+.chapter-content .callout.no-label{padding-top:24px}
+.chapter-content .callout::before{
+  content:'USER QUOTE';position:absolute;top:-11px;left:20px;
+  font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.14em;
+  background:var(--red);color:#fff;border:1.5px solid var(--ink);
+  border-radius:100px;padding:3px 11px;
+}
+.cs-figure{
+  border:1.5px solid var(--ink);border-radius:var(--r-md);
+  min-height:230px;margin:24px 0;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.cs-figure .fig-note{
+  position:absolute;bottom:14px;left:14px;
+  background:var(--cream);border:1.5px solid var(--ink);border-radius:100px;
+  font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:6px 13px;
+}
+.cs-figure .wire{
+  width:64%;height:60%;min-height:130px;
+  border:1.5px dashed var(--ink);border-radius:12px;
+  display:grid;grid-template-columns:1fr 2.3fr;gap:10px;padding:12px;
+  background:rgba(255,255,255,.5);
+}
+.cs-figure .wire i{display:block;border-radius:7px;border:1.5px solid var(--ink);background:#fff}
+.fg-a{background:var(--yellow)}
+.fg-b{background:var(--green)}
+.fg-c{background:#4DA6FF}
+.fg-d{background:var(--cream-2)}
+.insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+.insight{
+  border:1.5px solid var(--ink);border-radius:var(--r-md);background:#fff;
+  padding:20px;transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+}
+.insight:hover{transform:translate(-3px,-3px);box-shadow:4px 4px 0 var(--ink)}
+.insight .i-num{
+  display:inline-block;background:var(--purple);border:1.5px solid var(--ink);
+  border-radius:100px;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  padding:4px 11px;margin-bottom:12px;
+}
+.insight h5{font-family:var(--display);font-size:15px;margin-bottom:7px;line-height:1.25}
+.insight p{font-size:13px;font-weight:500;margin:0}
+.outcome-band{
+  background:var(--ink);color:var(--cream);
+  border-radius:var(--r-md);border:1.5px solid var(--ink);
+  padding:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  margin:24px 0;
+}
+.outcome{text-align:center}
+.outcome .o-n{font-family:var(--display);font-size:clamp(30px,3.6vw,46px);line-height:1;color:var(--yellow)}
+.outcome .o-n small{font-size:.5em}
+.outcome .o-l{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-top:10px;opacity:.75}
+.outcome-band.signals .o-n{font-size:clamp(19px,2.1vw,25px);line-height:1.2;color:var(--yellow)}
+.outcome-band.signals .o-l{opacity:.7;margin-top:9px}
+.outcome-note{font-size:13.5px;font-weight:600;opacity:.85;margin-top:18px;max-width:64ch}
+.cs-next{
+  border-top:1.5px solid var(--ink);background:var(--purple);
+  padding:52px 40px;text-align:center;
+}
+.cs-next .chip{
+  display:inline-block;border:1.5px solid var(--ink);border-radius:100px;
+  background:var(--cream);font-weight:700;font-size:12px;padding:7px 16px;margin-bottom:18px;
+}
+.cs-next h3{
+  font-family:var(--display);font-size:clamp(22px,3vw,38px);
+  letter-spacing:-.015em;line-height:1.1;max-width:22ch;margin:0 auto 26px;
+  cursor:pointer;transition:transform .3s;
+}
+.cs-next h3:hover{transform:scale(1.02) rotate(-.5deg)}
+.cs-next-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+
+/* ---------- GREEKED WIREFRAME KIT (NDA-safe figure placeholders) ---------- */
+.gk{border:1.5px solid var(--ink);border-radius:12px;background:#fff;overflow:hidden;width:100%}
+.gk-bar{height:24px;background:var(--ink);display:flex;align-items:center;gap:5px;padding:0 10px}
+.gk-bar i{width:7px;height:7px;border-radius:50%;background:rgba(242,237,226,.55);display:block}
+.gk-body{padding:14px;display:flex;flex-direction:column;gap:9px}
+.gk-l{height:9px;border-radius:100px;background:rgba(18,18,18,.15)}
+.gk-l.w90{width:90%}.gk-l.w75{width:75%}.gk-l.w60{width:60%}.gk-l.w45{width:45%}.gk-l.w30{width:30%}
+.gk-blur{filter:blur(2.4px)}
+.gk-card{
+  border:1.5px solid var(--ink);border-radius:10px;padding:9px 11px;background:var(--cream);
+  display:flex;align-items:center;gap:10px;
+}
+.gk-card .gk-num{
+  width:22px;height:22px;border-radius:50%;background:var(--ink);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-family:var(--display);font-size:10px;
+}
+.gk-card .gk-lines{flex:1;display:flex;flex-direction:column;gap:5px}
+.gk-card.flagged{border-color:var(--red);border-width:2px;background:rgba(227,49,42,.09)}
+.gk-flagbar{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  border:1.5px dashed var(--red);border-radius:10px;padding:8px 11px;background:rgba(227,49,42,.06);
+}
+.gk-flagbar .gk-warn{font-size:11px;font-weight:700;color:var(--ink);flex:1;min-width:120px}
+.gk-btns{display:flex;gap:6px}
+.gk-btn{
+  font-size:10px;font-weight:700;border:1.5px solid var(--ink);border-radius:100px;
+  padding:4px 11px;background:#fff;white-space:nowrap;
+}
+.gk-btn.solid{background:var(--ink);color:var(--cream)}
+.gk-flow{display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:center;padding:6px}
+.gk-node{
+  border:1.5px solid var(--ink);border-radius:100px;padding:7px 15px;
+  font-size:11.5px;font-weight:700;background:#fff;white-space:nowrap;
+}
+.gk-node.on{background:var(--yellow)}
+.gk-node.alt{background:var(--purple)}
+.gk-arrow{font-family:var(--display);font-size:14px}
+.gk-split{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%}
+.gk-branch{
+  border:1.5px solid var(--ink);border-radius:14px;background:#fff;padding:14px;
+  flex:1;min-width:190px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;
+}
+.gk-branch .gk-tag{
+  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  border:1.5px solid var(--ink);border-radius:100px;padding:3px 10px;
+}
+.gk-branch p{font-size:12.5px;font-weight:600;margin:0}
+.gk-grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+.gk-thumb{border:1.5px solid var(--ink);border-radius:12px;background:#fff;overflow:hidden}
+.gk-thumb .gk-cap{
+  font-size:10.5px;font-weight:700;padding:7px 10px;border-top:1.5px solid var(--ink);
+  background:var(--cream);
+}
+.gk-row{display:flex;gap:8px}
+.gk-row .gk-l{flex:1}
+.gk-edit{
+  width:20px;height:20px;border-radius:6px;border:1.5px solid var(--ink);background:var(--yellow);
+  display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;
+}
+.cs-figure .gk-wrap{width:78%;max-width:620px;padding:22px 0}
+.cs-figure.tall-fig{min-height:300px}
+
+/* chapter 6 (bonus) */
+.ch-6{background:var(--red);color:#fff}
+.ch-6 .cn{color:var(--ink)}
+
+/* NDA band */
+.cs-nda{
+  display:flex;align-items:center;gap:10px;
+  border:1.5px dashed var(--ink);border-radius:14px;
+  background:rgba(168,104,240,.14);
+  padding:11px 16px;margin-top:22px;
+  font-size:12.5px;font-weight:600;
+}
+.self-tag{
+  display:inline-block;background:var(--red);color:#fff;
+  border:1.5px solid var(--ink);border-radius:100px;
+  font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 12px;margin-bottom:14px;
+}
+@media(max-width:820px){
+  .cs-figure .gk-wrap{width:92%}
+  .gk-grid2{grid-template-columns:1fr}
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:1080px){
+  .play-grid{grid-template-columns:repeat(2,1fr)}
+  .belief-grid{grid-template-columns:1fr}
+  .proj,.proj:nth-child(even){grid-template-columns:1fr}
+  .proj:nth-child(even) .proj-visual{order:0;border-left:none}
+  .proj-visual{border-right:none;border-bottom:1.5px solid var(--ink);min-height:260px}
+  .hero{grid-template-columns:1fr}
+  .hero-visual{border-left:none;border-top:1.5px solid var(--ink);min-height:320px}
+  .about-split{grid-template-columns:1fr}
+  .about-photo{border-right:none;border-bottom:1.5px solid var(--ink);min-height:300px}
+}
+@media(max-width:820px){
+  body{padding:10px}
+  .frame{flex-direction:column}
+  .sidebar{
+    position:static;height:auto;width:100%;
+    flex-direction:row;align-items:center;gap:12px;flex-wrap:wrap;
+    padding:16px;
+  }
+  .side-nav{flex-direction:row;flex:1;margin-top:0;overflow-x:auto}
+  .nav-card{min-height:0;min-width:118px;padding:10px 12px;gap:14px}
+  .nav-cta{margin-top:0}
+  .side-foot{margin-top:0}
+  .content{border-left:none;border-top:1.5px solid var(--ink);padding:14px}
+  .cs-meta{grid-template-columns:repeat(2,1fr)}
+  .insight-grid{grid-template-columns:1fr}
+  .outcome-band{grid-template-columns:1fr;gap:22px}
+  .article{grid-template-columns:44px 1fr;gap:16px}
+  .article .a-meta{display:none}
+  .cs-hero,.cs-body{padding-left:20px;padding-right:20px}
+  .cs-cover{margin:0 20px}
+  .kinetic{height:190px}
+  .kinetic .pixel-smiley{width:150px;height:150px}
+}
+</style>
+</head>
+<body>
+
+<div class="frame">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar">
+    <a href="#home" class="wordmark">nrk.<small>Product Designer</small></a>
+    <nav class="side-nav">
+      <a href="#projects" class="nav-card nc-1">
+        <div class="top"><span>01</span><span class="arr">↗</span></div>
+        <div class="lbl">Projects</div>
+      </a>
+      <a href="#playground" class="nav-card nc-2">
+        <div class="top"><span>02</span><span class="arr">↗</span></div>
+        <div class="lbl">Playground</div>
+      </a>
+      <a href="#writing" class="nav-card nc-3">
+        <div class="top"><span>03</span><span class="arr">↗</span></div>
+        <div class="lbl">Blogs &amp; Articles</div>
+      </a>
+      <a href="#about" class="nav-card nc-4">
+        <div class="top"><span>04</span><span class="arr">↗</span></div>
+        <div class="lbl">About Me</div>
+      </a>
+    </nav>
+    <a href="#contact" class="nav-cta">Let's talk</a>
+    <div class="side-foot">
+      <a href="#" class="pill">in</a>
+      <a href="#" class="pill">Ⓓ</a>
+      <a href="#" class="pill">✉</a>
+    </div>
+  </aside>
+
+  <!-- ================= CONTENT ================= -->
+  <main class="content" id="home">
+
+    <!-- TICKER -->
+    <div class="ticker">
+      <div class="ticker-track" id="ticker">
+        <span>Product Strategy</span><span>Systems Thinking</span><span>Interaction Design</span><span>B2B SaaS</span><span>Design Systems</span><span>Rapid Prototyping</span><span>UX Research</span>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="panel hero">
+      <div class="hero-copy">
+        <div class="hero-chip"><span class="dot"></span> Available for senior product roles</div>
+        <h1>I design products people don't want to <span class="hl">put down.</span></h1>
+        <p>UX designer turned product builder. I turn messy problems into systems that feel effortless — from first insight to shipped interface.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn">See my work ↗</a>
+          <a href="#about" class="btn ghost">Who's nrk?</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <svg id="tunnel" viewBox="0 0 640 520" preserveAspectRatio="xMidYMid slice"></svg>
+      </div>
+    </section>
+
+    <!-- KINETIC STRIP -->
+    <section class="panel kinetic" id="kineticPanel">
+      <svg class="pixel-smiley" id="smileyBig" viewBox="0 0 15 15"></svg>
+      <div class="kinetic-text" id="kineticText">how I think about product ✳ how I think about product</div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="banner b-red reveal">
+        <span class="dd">↓↓</span>
+        <h2>Problems I've had the joy of solving.</h2>
+        <span class="dd">↓↓</span>
+      </div>
+
+      <div class="proj-grid">
+        <article class="proj reveal">
+          <div class="proj-visual pjv-1">
+            <span class="big-num">01</span>
+            <div class="mock">
+              <div class="m-bar"></div>
+              <div class="m-row"><div class="m-cell"></div><div class="m-cell"></div><div class="m-cell"></div></div>
+              <div class="m-wide"><i style="height:40%"></i><i style="height:75%"></i><i style="height:55%"></i><i style="height:92%"></i><i style="height:60%"></i></div>
+            </div>
+          </div>
+          <div class="proj-info">
+            <div class="kick">Conversational AI ϟ Case Study</div>
+            <h3>Teaching an AI to change its mind</h3>
+            <p>An AI avatar that got emotionally stuck. The brief arrived as a solution — my job was to find the problem underneath it.</p>
+            <div class="tags"><span class="tag">UX Design</span><span class="tag">Interaction Design</span><span class="tag">AI Product</span></div>
+            <div><a href="#" class="btn" data-case="0">Read the story ↗</a></div>
+          </div>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj-visual pjv-2">
+            <span class="big-num">02</span>
+            <div class="mock">
+              <div class="m-bar"></div>
+              <div class="m-row"><div class="m-cell"></div><div class="m-cell"></div><div class="m-cell"></div></div>
+              <div class="m-wide"><i style="height:65%"></i><i style="height:45%"></i><i style="height:88%"></i><i style="height:52%"></i><i style="height:70%"></i></div>
+            </div>
+          </div>
+          <div class="proj-info">
+            <div class="kick">Self-Initiated Venture ϟ Case Study</div>
+            <h3>FIRSTTRAIL — where knowledge becomes experience</h3>
+            <p>4 years in college, lakhs in debt, and still no clue what to do to make a living. A work-simulation platform for the gap between what college teaches and what industry expects.</p>
+            <div class="tags"><span class="tag">Product Strategy</span><span class="tag">EdTech</span><span class="tag">Founder</span></div>
+            <div><a href="#" class="btn" data-case="1">Read the story ↗</a></div>
+          </div>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj-visual pjv-3">
+            <span class="big-num">03</span>
+            <div class="mock">
+              <div class="m-bar"></div>
+              <div class="m-row"><div class="m-cell"></div><div class="m-cell"></div><div class="m-cell"></div></div>
+              <div class="m-wide"><i style="height:50%"></i><i style="height:82%"></i><i style="height:38%"></i><i style="height:66%"></i><i style="height:95%"></i></div>
+            </div>
+          </div>
+          <div class="proj-info">
+            <div class="kick">Analytics ϟ Case Study</div>
+            <h3>Turning a wall of data into decisions people trust</h3>
+            <p>Dashboards fail when they answer questions nobody asked. This one started with the questions — then designed backwards.</p>
+            <div class="tags"><span class="tag">Data Viz</span><span class="tag">IA</span><span class="tag">Enterprise UX</span></div>
+            <div><a href="#" class="btn" data-case="2">Read the story ↗</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PLAYGROUND -->
+    <section id="playground" style="margin-top:18px">
+      <div class="banner b-purple reveal">
+        <span class="dd">↓↓</span>
+        <h2>Where I break things on purpose.</h2>
+        <span class="dd">↓↓</span>
+      </div>
+      <div class="play-wrap reveal">
+        <div class="play-grid">
+          <div class="play-card pg-1">
+            <div class="pg-art"><div class="ball"></div></div>
+            <h4>Elastic interactions</h4><small>Motion study</small>
+          </div>
+          <div class="play-card pg-2">
+            <div class="pg-art px-grid-holder"><div class="px-grid" id="pxGrid"></div></div>
+            <h4>Generative pixels</h4><small>Creative code</small>
+          </div>
+          <div class="play-card pg-3">
+            <div class="pg-art"><div class="cursor"></div></div>
+            <h4>Custom cursors</h4><small>Micro-interaction</small>
+          </div>
+          <div class="play-card pg-4">
+            <div class="pg-art"><div class="eq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <h4>Sound-reactive visuals</h4><small>WebAudio</small>
+          </div>
+          <div class="play-card pg-5">
+            <svg class="smile-mini" id="smileyMini" viewBox="0 0 15 15"></svg>
+            <h4>Pixel-art systems</h4><small>Illustration</small>
+          </div>
+          <div class="play-card pg-6">
+            <div class="pg-art"><div class="aa">Aa</div></div>
+            <h4>Kinetic typography</h4><small>Type study</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WRITING -->
+    <section id="writing" style="margin-top:18px">
+      <div class="banner b-green reveal">
+        <span class="dd">↓↓</span>
+        <h2>Thinking out loud.</h2>
+        <span class="dd">↓↓</span>
+      </div>
+      <div class="article-list reveal">
+        <a href="#" class="article">
+          <span class="a-num">01</span>
+          <div>
+            <h4>Why your onboarding is really a trust problem</h4>
+            <p>Users don't abandon setup because it's long. They abandon it because they stop believing it will pay off.</p>
+          </div>
+          <div class="a-meta"><b><span>Product Thinking</span></b>6 min read</div>
+        </a>
+        <a href="#" class="article">
+          <span class="a-num">02</span>
+          <div>
+            <h4>Design systems are social systems first</h4>
+            <p>The hardest component to build isn't the button. It's the agreement about what the button means.</p>
+          </div>
+          <div class="a-meta"><b><span>Systems</span></b>8 min read</div>
+        </a>
+        <a href="#" class="article">
+          <span class="a-num">03</span>
+          <div>
+            <h4>The case for designing the boring parts beautifully</h4>
+            <p>Empty states, error messages, loading screens — the moments nobody demos are the moments users remember.</p>
+          </div>
+          <div class="a-meta"><b><span>Craft</span></b>5 min read</div>
+        </a>
+        <a href="#" class="article">
+          <span class="a-num">04</span>
+          <div>
+            <h4>From UX designer to product builder</h4>
+            <p>What changed when I stopped handing off designs and started owning outcomes.</p>
+          </div>
+          <div class="a-meta"><b><span>Career</span></b>7 min read</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" style="margin-top:18px">
+      <div class="banner b-yellow reveal">
+        <span class="dd">↓↓</span>
+        <h2>Why nrk hits different.</h2>
+        <span class="dd">↓↓</span>
+      </div>
+
+      <div class="belief-grid">
+        <div class="belief bl-1 reveal">
+          <div class="b-pill"><span class="n">1</span> For people</div>
+          <h4>Every screen is a conversation</h4>
+          <p>With a real person having a real day. I design for how it feels to be on the other side of the interface.</p>
+        </div>
+        <div class="belief bl-2 reveal d1">
+          <div class="b-pill"><span class="n">2</span> By systems</div>
+          <h4>One good screen is luck</h4>
+          <p>A hundred consistent ones is a system. I build the underlying logic, not just the surface.</p>
+        </div>
+        <div class="belief bl-3 reveal d2">
+          <div class="b-pill"><span class="n">3</span> With craft</div>
+          <h4>The last 10% is the product</h4>
+          <p>The easing curve, the empty state, the word choice — where good products become loved ones.</p>
+        </div>
+      </div>
+
+      <div class="about-split reveal">
+        <div class="about-photo">
+          <svg class="face" id="smileyFace" viewBox="0 0 15 15"></svg>
+          <div class="loc">📍 Kerala, India — designing for the world</div>
+        </div>
+        <div class="about-copy">
+          <h3>Hello, I'm a designer who <span class="hl">builds.</span></h3>
+          <p>I started in UX, fell in love with the whole product — the strategy, the systems, the shipping. Now I work across the full arc: from the first messy question to the last polished pixel.</p>
+          <p>My background is B2B SaaS, where complexity is the default and clarity is the craft. I believe the best products feel less like tools and more like good instincts.</p>
+          <div class="fact-row">
+            <div class="fact"><div class="n">B2B</div><div class="l">SaaS Focus</div></div>
+            <div class="fact"><div class="n">0→1</div><div class="l">Product Builder</div></div>
+            <div class="fact"><div class="n">∞</div><div class="l">Curiosity</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / FOOTER -->
+    <section class="panel cta-panel" id="contact" style="margin-top:18px">
+      <div class="chip">Next chapter ϟ</div>
+      <h2>Let's build something people love to use.</h2>
+      <a href="mailto:hello@nrk.design" class="btn">Start a conversation ↗</a>
+      <div class="pixel-floor" id="pixelFloor">
+        <div class="giant">nrk.</div>
+        <div class="giant g-right">©26</div>
+      </div>
+    </section>
+
+    <div class="foot-row">
+      <span>Designed &amp; built with care — no templates were harmed</span>
+      <div class="links">
+        <a href="#">LinkedIn</a><a href="#">Dribbble</a><a href="#">GitHub</a><a href="#">Email</a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ================= CASE STUDY VIEW ================= -->
+<div class="case-view" id="caseView">
+  <div class="cs-frame">
+    <div class="cs-top">
+      <button class="back-btn" id="backBtn">← Back to projects</button>
+      <span class="cs-crumb">Case Study <em id="csCrumbNum">01</em>&nbsp; of 03</span>
+      <div class="cs-progress" id="csProgress"><i></i></div>
+    </div>
+
+    <div class="cs-hero">
+      <div class="chip" id="csChip">B2B SaaS</div>
+      <h1 id="csTitle"></h1>
+      <p class="cs-lede" id="csLede"></p>
+      <div class="cs-nda" id="csNda">🔒 Client anonymised under NDA — every visual here is a redrawn, greeked wireframe. No real product UI, copy or data is shown.</div>
+      <div class="cs-meta">
+        <div class="m"><div class="k">Role</div><div class="v" id="csRole"></div></div>
+        <div class="m"><div class="k">Timeline</div><div class="v" id="csTime"></div></div>
+        <div class="m"><div class="k">Team</div><div class="v" id="csTeam"></div></div>
+        <div class="m"><div class="k">Status</div><div class="v" id="csPlatform"></div></div>
+      </div>
+    </div>
+
+    <div class="cs-cover" id="csCover">
+      <span class="pv-tag" id="csCoverLabel"></span>
+      <div id="csCoverInner"></div>
+    </div>
+
+    <div class="cs-body" id="csBody"></div>
+
+    <div class="cs-next">
+      <div class="chip">Next story ϟ</div>
+      <h3 id="csNextTitle"></h3>
+      <div class="cs-next-actions">
+        <a href="#" class="btn" id="csNextBtn">Read next case study ↗</a>
+        <a href="#" class="btn ghost" id="csBackBottom">Back to all projects</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================= COLORS ================= */
+const PALETTE = ['#1D5DEB','#F7AC1B','#F04E23','#1CB254','#A868F0','#E3312A'];
+
+/* ================= TICKER ================= */
+const ticker = document.getElementById('ticker');
+ticker.innerHTML += ticker.innerHTML;
+
+/* ================= PERSPECTIVE TUNNEL ================= */
+(function buildTunnel(){
+  const svg = document.getElementById('tunnel');
+  const W = 640, H = 520;
+  const cx = W/2, cy = H/2;
+  const innerW = 110, innerH = 90;
+  const RINGS = 9, SEGS = 5;
+  const NS = 'http://www.w3.org/2000/svg';
+
+  function ringRect(t){
+    // t: 0 = outer (full), 1 = inner
+    const w = W + (innerW - W) * t;
+    const h = H + (innerH - H) * t;
+    return {x: cx - w/2, y: cy - h/2, w, h};
+  }
+  function edgePoint(r, edge, u){
+    // u in [0,1] along the edge
+    if (edge === 0) return [r.x + r.w * u, r.y];               // top
+    if (edge === 1) return [r.x + r.w, r.y + r.h * u];         // right
+    if (edge === 2) return [r.x + r.w * (1-u), r.y + r.h];     // bottom
+    return [r.x, r.y + r.h * (1-u)];                            // left
+  }
+  // colored cells first (behind lines)
+  const rng = (seed => () => (seed = (seed * 9301 + 49297) % 233280) / 233280)(42);
+  for (let k = 0; k < RINGS; k++){
+    const rA = ringRect(k / RINGS), rB = ringRect((k+1) / RINGS);
+    for (let edge = 0; edge < 4; edge++){
+      for (let s = 0; s < SEGS; s++){
+        if (rng() > 0.16) continue;
+        const u0 = s / SEGS, u1 = (s+1) / SEGS;
+        const p1 = edgePoint(rA, edge, u0), p2 = edgePoint(rA, edge, u1);
+        const p3 = edgePoint(rB, edge, u1), p4 = edgePoint(rB, edge, u0);
+        const poly = document.createElementNS(NS, 'polygon');
+        poly.setAttribute('points', [p1,p2,p3,p4].map(p => p.join(',')).join(' '));
+        poly.setAttribute('fill', PALETTE[Math.floor(rng() * PALETTE.length)]);
+        svg.appendChild(poly);
+      }
+    }
+  }
+  // ring outlines
+  for (let k = 0; k <= RINGS; k++){
+    const r = ringRect(k / RINGS);
+    const rect = document.createElementNS(NS, 'rect');
+    rect.setAttribute('x', r.x); rect.setAttribute('y', r.y);
+    rect.setAttribute('width', r.w); rect.setAttribute('height', r.h);
+    rect.setAttribute('fill', 'none');
+    rect.setAttribute('stroke', '#121212');
+    rect.setAttribute('stroke-width', '1.4');
+    svg.appendChild(rect);
+  }
+  // radial lines
+  const rOut = ringRect(0), rIn = ringRect(1);
+  for (let edge = 0; edge < 4; edge++){
+    for (let s = 0; s <= SEGS; s++){
+      const u = s / SEGS;
+      const pO = edgePoint(rOut, edge, u), pI = edgePoint(rIn, edge, u);
+      const line = document.createElementNS(NS, 'line');
+      line.setAttribute('x1', pO[0]); line.setAttribute('y1', pO[1]);
+      line.setAttribute('x2', pI[0]); line.setAttribute('y2', pI[1]);
+      line.setAttribute('stroke', '#121212');
+      line.setAttribute('stroke-width', '1.4');
+      svg.appendChild(line);
+    }
+  }
+  // center window
+  const c = ringRect(1);
+  const win = document.createElementNS(NS, 'rect');
+  win.setAttribute('x', c.x); win.setAttribute('y', c.y);
+  win.setAttribute('width', c.w); win.setAttribute('height', c.h);
+  win.setAttribute('fill', '#F2EDE2');
+  win.setAttribute('stroke', '#121212');
+  win.setAttribute('stroke-width', '1.4');
+  svg.appendChild(win);
+})();
+
+/* ================= PIXEL SMILEY ================= */
+function buildSmiley(id, color){
+  const svg = document.getElementById(id);
+  if (!svg) return;
+  const NS = 'http://www.w3.org/2000/svg';
+  const C = 7, R = 6.1;
+  const cells = [];
+  for (let y = 0; y < 15; y++){
+    for (let x = 0; x < 15; x++){
+      const d = Math.hypot(x - C, y - C);
+      if (Math.abs(d - R) < 0.62) cells.push([x, y, color]);          // ring
+    }
+  }
+  // eyes
+  cells.push([4,5,color],[4,4,color],[10,5,color],[10,4,color]);
+  // mouth arc
+  for (let x = 4; x <= 10; x++){
+    const y = x === 4 || x === 10 ? 8 : (x === 5 || x === 9 ? 9 : 10);
+    cells.push([x, y, color]);
+  }
+  cells.forEach(([x, y, c]) => {
+    const r = document.createElementNS(NS, 'rect');
+    r.setAttribute('x', x); r.setAttribute('y', y);
+    r.setAttribute('width', 0.94); r.setAttribute('height', 0.94);
+    r.setAttribute('fill', c);
+    svg.appendChild(r);
+  });
+}
+buildSmiley('smileyBig', '#A868F0');
+buildSmiley('smileyMini', '#F7AC1B');
+buildSmiley('smileyFace', '#F2EDE2');
+
+/* ================= KINETIC TEXT ================= */
+const kPanel = document.getElementById('kineticPanel');
+const kText = document.getElementById('kineticText');
+function kinetic(){
+  const r = kPanel.getBoundingClientRect();
+  const vh = innerHeight;
+  const progress = 1 - Math.min(Math.max((r.top + r.height) / (vh + r.height), 0), 1);
+  const range = kText.scrollWidth - r.width;
+  kText.style.transform = `translateX(${ -progress * Math.max(range, 0) }px)`;
+}
+addEventListener('scroll', kinetic, {passive:true});
+addEventListener('resize', kinetic);
+kinetic();
+
+/* ================= PIXEL CONFETTI (footer + playground) ================= */
+(function confetti(){
+  const floor = document.getElementById('pixelFloor');
+  const cell = 26;
+  for (let i = 0; i < 46; i++){
+    const px = document.createElement('i');
+    px.className = 'px-confetti';
+    px.style.left = (Math.floor(Math.random() * 50) * cell) + 'px';
+    px.style.top = (Math.floor(Math.random() * 7) * cell) + 'px';
+    px.style.background = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+    px.style.position = 'absolute';
+    floor.appendChild(px);
+  }
+  const grid = document.getElementById('pxGrid');
+  if (grid){
+    for (let i = 0; i < 14; i++){
+      const c = document.createElement('i');
+      c.className = 'px-cell';
+      c.style.left = (Math.floor(Math.random() * 10) * 16) + 'px';
+      c.style.top = (Math.floor(Math.random() * 7) * 16) + 'px';
+      c.style.background = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+      c.style.position = 'absolute';
+      grid.appendChild(c);
+    }
+  }
+})();
+
+/* ================= REVEALS ================= */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, {threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ================= CASE STUDY DATA ================= */
+const cases = [
+  {
+    label:'AI Product Design', cover:'fg-a', chip:'Conversational AI ϟ Teardown', nda:true,
+    title:'Teaching an AI to <span class="hl">change its mind.</span>',
+    lede:'A conversational-AI training platform had one problem: the avatar got emotionally stuck. The brief arrived as a solution — my job was to find the problem underneath it.',
+    role:'UX & Interaction Design', time:'~2 weeks', team:'Me + design leads + client stakeholders',
+    status:'Ongoing — in feasibility validation',
+    coverHtml:`
+      <div style="text-align:center;padding:10px 20px">
+        <div style="font-family:var(--display);font-size:clamp(26px,3.4vw,42px);line-height:1.1;max-width:20ch;margin:0 auto">A 12-scene teardown of one design decision</div>
+        <div style="display:inline-block;margin-top:16px;background:var(--cream);border:1.5px solid var(--ink);border-radius:100px;padding:8px 18px;font-weight:700;font-size:12px">⏱ 6 min read · 12 scenes · 6 principles</div>
+      </div>`,
+    scenes:[
+    {
+      c:'sc-red', face:'worried', t:'Meet the avatar that cannot calm down.', tag:'The problem',
+      say:`<p>This is a platform where you rehearse hard conversations with an AI — angry customers, tough feedback, tense negotiations.</p>
+           <p>Watch what happens when the learner does <b>everything right</b>.</p>
+           <p><em>Spoiler: nothing happens.</em></p>`,
+      stage:`
+        <div class="device">
+          <div class="dev-bar"><i></i><i></i><i></i><span>roleplay · live session</span></div>
+          <div class="dev-screen tight">
+            <div class="chatline them"><div class="who">😠</div><div class="msg"><span class="moodtag mood-angry">Angry</span><i class="ln b w95"></i><i class="ln b w70"></i></div></div>
+            <div class="chatline me"><div class="who">🙂</div><div class="msg"><i class="ln b w85"></i></div></div>
+            <div class="chatline them"><div class="who">😠</div><div class="msg"><span class="moodtag mood-angry">Angry</span><i class="ln b w90"></i></div></div>
+            <div class="chatline me"><div class="who">🙂</div><div class="msg"><i class="ln b w70"></i></div></div>
+            <div class="chatline them"><div class="who">😠</div><div class="msg"><span class="moodtag mood-angry">Angry</span><i class="ln b w95"></i><i class="ln b w55"></i></div></div>
+            <div class="hotspot" style="top:8%;right:10%">1</div>
+          </div>
+        </div>
+        <div class="dev-cap">Greeked — five turns in, the mood never moves</div>`,
+      why:`
+        <div class="note"><span class="nn">1</span><p>The learner showed empathy, apologised, offered a fix. The avatar stayed angry through all of it.</p></div>
+        <div class="verdict bad"><span class="vi">✕</span><div>No emotional movement means no feedback. The learner cannot tell what worked — so they stop trying.</div></div>`
+    },
+    {
+      c:'sc-orange', face:'thinking', t:'Why it got stuck.', tag:'Diagnosis',
+      say:`<p>The scenario was the <b>only context</b> the model had. One paragraph, read fresh every single turn.</p>
+           <p>No memory of an arc — because there was no arc to remember.</p>`,
+      stage:`
+        <div class="device">
+          <div class="dev-bar"><i></i><i></i><i></i><span>what the model sees</span></div>
+          <div class="dev-screen">
+            <div class="pcard"><span class="pn">S</span><div class="pl"><i class="ln b w85"></i><i class="ln b w55"></i></div></div>
+            <div style="text-align:center;font-family:var(--display);font-size:15px">↓ every turn ↓</div>
+            <div class="pcard bad"><span class="pn">AI</span><div class="pl"><span class="moodtag mood-angry">Angry</span></div></div>
+            <div style="text-align:center;font-family:var(--display);font-size:15px">↺</div>
+          </div>
+        </div>
+        <div class="dev-cap">One scenario in, one emotion out, forever</div>`,
+      why:`
+        <div class="principle">
+          <span class="pr-badge">📌 Principle</span>
+          <h4>Mental Models</h4>
+          <p>People carry an internal model of how conversations behave — tension rises, then eases when you say the right thing. When a system contradicts that model, users do not adapt to it. They conclude it is broken and disengage.</p>
+        </div>`
+    },
+    {
+      c:'sc-yellow', face:'surprised', t:'The brief arrived pre-solved.', tag:'The ask',
+      say:`<p>The client had already reasoned their way to an answer and handed it over:</p>
+           <p><b>"Add an AI step that splits the conversation into phases."</b></p>
+           <p>That is a solution. I needed the problem under it.</p>`,
+      stage:`
+        <div class="device">
+          <div class="dev-bar"><i></i><i></i><i></i><span>the brief</span></div>
+          <div class="dev-screen">
+            <i class="ln b w95"></i><i class="ln b w85"></i>
+            <div class="pcard" style="border-width:2px"><div class="pl"><i class="ln w70" style="background:var(--ink)"></i><i class="ln b w40"></i></div></div>
+            <i class="ln b w90"></i><i class="ln b w55"></i>
+            <div class="hotspot" style="top:40%;left:-11px">1</div>
+          </div>
+        </div>
+        <div class="dev-cap">Greeked — the one line that carried two different needs</div>`,
+      why:`
+        <div class="principle">
+          <span class="pr-badge">📌 Principle</span>
+          <h4>Problem Framing</h4>
+          <p>A brief written as a solution hides the constraint that produced it. Accepting it as written means designing to someone else's first guess rather than to the actual problem.</p>
+        </div>
+        <div class="note"><span class="nn">1</span><p>Two needs were tangled in one sentence — and they pull in opposite directions.</p></div>`
+    },
+    {
+      c:'sc-purple', face:'thinking', t:'Two needs pulling apart.', tag:'The tension',
+      say:`<p><b>One:</b> stop the AI looping.</p>
+           <p><b>Two:</b> let creators shape and trust the result.</p>
+           <p>Hand the AI full control and creators lose theirs. Hand creators full control and the arc falls apart. The whole project lives in that gap.</p>`,
+      stage:`
+        <div class="forks">
+          <div class="fork"><span class="ft" style="background:var(--blue);color:#fff">AI decides</span> Coherent arc · creator has no say</div>
+          <div style="text-align:center;font-family:var(--display);font-size:20px">⟷</div>
+          <div class="fork"><span class="ft" style="background:var(--orange);color:#fff">Human decides</span> Full control · arc breaks silently</div>
+        </div>
+        <div class="dev-cap">The axis every decision had to sit on</div>`,
+      why:`
+        <div class="principle">
+          <span class="pr-badge">📌 Principle</span>
+          <h4>Automation vs. Autonomy</h4>
+          <p>Automation is only accepted where the user keeps a meaningful veto. The design question is never "how much should the AI do" — it is "where does the human get to disagree, and do they have enough information to."</p>
+        </div>`
+    },
+    {
+      c:'sc-blue', face:'neutral', t:'Where the step belongs.', tag:'Information architecture',
+      say:`<p>By step six, the AI already knows the persona, the scenario, the context and the learning goals.</p>
+           <p>That is the first moment it can draft something worth reading.</p>
+           <p><em>Any earlier and it is guessing.</em></p>`,
+      stage:`
+        <div class="device">
+          <div class="dev-bar"><i></i><i></i><i></i><span>customize roleplay</span></div>
+          <div class="dev-screen tight">
+            <div class="stepper">
+              <div class="step off"><span class="sn">1</span> Persona</div>
+              <div class="step off"><span class="sn">2</span> Scenario</div>
+              <div class="step off"><span class="sn">3</span> Context for the AI</div>
+              <div class="step off"><span class="sn">4</span> Learning goals</div>
+              <div class="step off"><span class="sn">5</span> Documents</div>
+              <div class="step on"><span class="sn">6</span> Conversation phases</div>
+              <div class="step off"><span class="sn">7</span> Review &amp; publish</div>
+            </div>
+            <div class="hotspot" style="top:69%;right:4%">1</div>
+          </div>
+        </div>
+        <div class="dev-cap">Late enough to be informed, early enough to be edited</div>`,
+      why:`
+        <div class="principle">
+          <span class="pr-badge">📌 Principle</span>
+          <h4>Progressive Disclosure</h4>
+          <p>Complex setup survives when each step only asks for what the previous steps have earned. Placing generation last turns a 40-field form into a draft the user reacts to instead of authors.</p>
+        </div>
+        <div class="note"><span class="nn">1</span><p>Generation sits <em>before</em> review, never after — so the creator always gets the last word.</p></div>`
+    },
+    {
+      c:'sc-red', face:'surprised', t:'Then I found the hole.', tag:'Failure mode',
+      say:`<p>Creators can edit any phase. So here is the sequence nobody had named:</p>
+           <p>Edit phase 2. Close the tab. Publish.</p>
+           <p>Phase 3's exit condition now contradicts phase 2 — and <b>nobody finds out</b> until a learner is mid-roleplay in a scenario that argues with itself.</p>`,
+      stage:`
+        <div class="device">
+          <div class="dev-bar"><i></i><i></i><i></i><span>conversation phases</span></div>
+          <div class="dev-screen tight">
+            <div class="pcard"><span class="pn">1</span><div class="pl"><i class="ln b w85"></i><i class="ln b w55"></i></div></div>
+            <div class="pcard good"><span class="pn">2</span><div class="pl"><span class="moodtag mood-calm">Edited · calm</span><i class="ln b w70"></i></div></div>
+            <div class="pcard bad"><span class="pn">3</span><div class="pl"><span class="moodtag mood-angry">Expects · angry</span><i class="ln b w85"></i></div></div>
+            <div class="pcard dim"><span class="pn">4</span><div class="pl"><i class="ln b w70"></i></div></div>
+            <div class="hotspot" style="top:33%;left:-11px">1</div>
+            <div class="hotspot" style="top:55%;left:-11px">2</div>
+          </div>
+        </div>
+        <div class="dev-cap">Greeked — phase 2 was softened, phase 3 never got the memo</div>`,
+      why:`
+        <div class="note"><span class="nn">1</span><p>The creator softens phase 2 to "calm".</p></div>
+        <div class="note"><span class="nn">2</span><p>Phase 3 still waits for an angry customer to de-escalate. It can never trigger.</p></div>
+        <div class="principle">
+          <span class="pr-badge">📌 Principle</span>
+          <h4>Error Prevention · Nielsen #5</h4>
+          <p>The best error message is the one never needed. Where a mistake is silent and only surfaces downstream, prevention has to be designed in — detection after publish is already too late.</p>
+        </div>`
+    },
+    {
+      c:'sc-green', face:'happy', t:'The safety net.', tag:'The core decision',
+      say:`<p>So the AI re-reads your edits and flags the contradiction <b>before</b> you publish.</p>
+           <p>Three ways out: accept the fix, edit it yourself, or ignore it entirely.</p>
+           <p>Still your call. You just cannot make it blind.</p>`,
+      stage:`
+        <div class="device">
+          <div class="dev-bar"><i></i><i></i><i></i><span>review your edits</span></div>
+          <div class="dev-screen tight">
+            <div class="pcard"><span class="pn">1</span><div class="pl"><i class="ln b w85"></i></div></div>
+            <div class="pcard bad"><span class="pn">2</span><div class="pl"><i class="ln b w90"></i><i class="ln b w55"></i></div></div>
+            <div style="border:1.5px dashed var(--red);border-radius:10px;padding:9px 11px;background:rgba(227,49,42,.07);display:flex;gap:9px;align-items:center;flex-wrap:wrap">
+              <span style="flex:1;font-size:11px;font-weight:700;min-width:130px">⚠ AI found an inconsistency in your edit</span>
+              <span style="display:flex;gap:5px">
+                <span class="killbtn" style="background:var(--ink);color:var(--cream)">Accept fix</span>
+                <span class="killbtn">Edit</span>
+                <span class="killbtn">Ignore</span>
+              </span>
+            </div>
+            <div class="pcard"><span class="pn">3</span><div class="pl"><i class="ln b w70"></i></div></div>
+            <div class="hotspot" style="top:46%;right:-11px">1</div>
+          </div>
+        </div>
+        <div class="dev-cap">Greeked — flag, then three exits</div>`,
+      why:`
+        <div class="principle">
+          <span class="pr-badge">📌 Principle</span>
+          <h4>User Control &amp; Freedom · Nielsen #3</h4>
+          <p>A guardrail that cannot be overruled becomes a wall users route around. Offering "ignore" alongside "accept" keeps authority with the human while making the consequence visible.</p>
+        </div>
+        <div class="verdict good"><span class="vi">✓</span><div>This reframes human and AI as collaborators with a safety net between them — not a handoff where whoever touched it last wins.</div></div>
+        <div class="note"><span class="nn">1</span><p>The risk surfaced in an internal peer review. Recognising what it meant for the flow, and redesigning around it, was my contribution.</p></div>`
+    },
+    {
+      c:'sc-orange', face:'thinking', t:'Removing the buttons everyone expects.', tag:'Restraint',
+      say:`<p>Add a phase. Reorder. Delete.</p>
+           <p>Every power user wants these three. I argued to <b>remove all of them</b> — and the client came with me.</p>`,
+      stage:`
+        <div class="device">
+          <div class="dev-bar"><i></i><i></i><i></i><span>phase controls</span></div>
+          <div class="dev-screen" style="align-items:center;padding:30px 16px">
+            <div class="killrow">
+              <span class="killbtn killed">+ Add phase</span>
+              <span class="killbtn killed">↕ Reorder</span>
+              <span class="killbtn killed">🗑 Delete</span>
+            </div>
+            <div style="height:10px"></div>
+            <div class="killrow"><span class="killbtn" style="background:var(--green);color:#fff">✎ Edit within a phase</span></div>
+          </div>
+        </div>
+        <div class="dev-cap">Three affordances cut, one kept</div>`,
+      why:`
+        <div class="principle">
+          <span class="pr-badge">📌 Principle</span>
+          <h4>Hick's Law</h4>
+          <p>Every added control costs decision time for every user, including those who never touch it. A control that can silently corrupt the output costs more than it returns.</p>
+        </div>
+        <div class="note"><span class="nn">1</span><p>Reordering forces the AI to re-reason the whole arc. Rewriting generated structure by hand risks drifting the entire scenario — and live re-generation was genuinely hard to implement.</p></div>
+        <div class="verdict good"><span class="vi">✓</span><div>Fewer options, more trust. Creators can edit within a phase; they cannot fracture the arc.</div></div>`
+    },
+    {
+      c:'sc-purple', face:'aha', t:'"Creator" turned out to be two people.', tag:'The reframe',
+      say:`<p>I stopped asking <em>how</em> editing should work and asked <b>who</b> was editing.</p>
+           <p>A trainer building a graded exercise. And a learner who just wants to practise a different angle.</p>
+           <p>Same button. Opposite needs. The learner would have overwritten the master copy everyone else depends on.</p>`,
+      stage:`
+        <div class="forks">
+          <div class="fork"><span class="ft" style="background:var(--yellow)">Trainer</span> Owns the master → edits it directly</div>
+          <div class="fork"><span class="ft" style="background:var(--purple)">Learner</span> Duplicates → edits their own copy</div>
+          <div class="fork"><span class="ft" style="background:var(--green);color:#fff">Unsure creator</span> Publishes → practises → edits after</div>
+        </div>
+        <div class="dev-cap">Three paths, one protected master</div>`,
+      why:`
+        <div class="principle">
+          <span class="pr-badge">📌 Principle</span>
+          <h4>Principle of Least Astonishment</h4>
+          <p>A shared object that silently changes for everyone when one person edits it is the most expensive surprise an app can deliver. Duplicate-to-edit makes the blast radius match the user's expectation of it.</p>
+        </div>
+        <div class="note"><span class="nn">1</span><p>The third path only surfaced because I had mapped the whole platform: sometimes the creator does not know the right phases until they have felt them.</p></div>`
+    },
+    {
+      c:'sc-yellow', face:'happy', t:'The thirty-second win.', tag:'Craft',
+      say:`<p>Final polish pass. An edit icon on every row of the Review &amp; Publish screen.</p>
+           <p>Trivial to build. Removes a hunt back through six steps.</p>`,
+      stage:`
+        <div class="device">
+          <div class="dev-bar"><i></i><i></i><i></i><span>review &amp; publish</span></div>
+          <div class="dev-screen tight">
+            <div class="pcard"><div class="pl"><i class="ln b w70"></i></div><span class="pn" style="background:var(--yellow);color:var(--ink)">✎</span></div>
+            <div class="pcard"><div class="pl"><i class="ln b w90"></i></div><span class="pn" style="background:var(--yellow);color:var(--ink)">✎</span></div>
+            <div class="pcard"><div class="pl"><i class="ln b w55"></i></div><span class="pn" style="background:var(--yellow);color:var(--ink)">✎</span></div>
+            <div class="pcard"><div class="pl"><i class="ln b w85"></i></div><span class="pn" style="background:var(--yellow);color:var(--ink)">✎</span></div>
+            <div class="hotspot" style="top:6%;right:-11px">1</div>
+          </div>
+        </div>
+        <div class="dev-cap">Greeked — jump back in from anywhere</div>`,
+      why:`
+        <div class="principle">
+          <span class="pr-badge">📌 Principle</span>
+          <h4>Recognition Over Recall · Nielsen #6</h4>
+          <p>Make the action visible at the point of doubt. A creator scanning a summary should not have to remember which step held the thing they want to change.</p>
+        </div>`
+    },
+    {
+      c:'sc-green', face:'happy', t:'Then the scope grew.', tag:'Trust signal',
+      say:`<p>The client was impressed enough to hand me four more flows.</p>
+           <p>Because I had mapped the whole platform before touching a frame, I kept seeing <b>the same flaw wearing different costumes</b>.</p>`,
+      stage:`
+        <div class="device">
+          <div class="dev-bar"><i></i><i></i><i></i><span>four more flows</span></div>
+          <div class="dev-screen" style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+            <div class="pcard"><div class="pl"><i class="ln b w85"></i><i class="ln b w55"></i></div></div>
+            <div class="pcard"><div class="pl"><i class="ln b w70"></i><i class="ln b w85"></i></div></div>
+            <div class="pcard"><div class="pl"><i class="ln b w90"></i><i class="ln b w40"></i></div></div>
+            <div class="pcard"><div class="pl"><i class="ln b w55"></i><i class="ln b w70"></i></div></div>
+          </div>
+        </div>
+        <div class="dev-cap">Upload instructions · adaptive edit · share anytime · hints</div>`,
+      why:`
+        <div class="verdict bad"><span class="vi">✕</span><div><b>The root cause, four times over:</b> the product was built for a happy path. Real users deviate — and the flow had no answer when they did.</div></div>
+        <div class="note"><span class="nn">1</span><p>Hints were the hardest. Every conditional trigger made the flow more fragile, so the answer was a subtle button that is simply always there.</p></div>`
+    },
+    {
+      c:'sc-cream', face:'neutral', t:'Where it actually stands.', tag:'Honest outcome',
+      say:`<p>It has not shipped yet. I would rather tell you what is true than invent a number.</p>
+           <p>The signals that genuinely exist today are below. The metrics go here once it is live.</p>`,
+      stage:`
+        <div class="device">
+          <div class="dev-bar"><i></i><i></i><i></i><span>status</span></div>
+          <div class="dev-screen tight">
+            <div class="pcard good"><span class="pn">✓</span><div class="pl"><b style="font-size:12.5px">Scope expanded mid-project, on client request</b></div></div>
+            <div class="pcard good"><span class="pn">✓</span><div class="pl"><b style="font-size:12.5px">Driven by real customer feedback, customers in the pipeline</b></div></div>
+            <div class="pcard good"><span class="pn">✓</span><div class="pl"><b style="font-size:12.5px">A further module already secured</b></div></div>
+            <div class="pcard"><span class="pn">…</span><div class="pl"><b style="font-size:12.5px">In feasibility validation · UI design is the agreed next phase</b></div></div>
+          </div>
+        </div>
+        <div class="dev-cap">No impact metrics yet — the build has not shipped</div>`,
+      why:`
+        <div class="principle">
+          <span class="pr-badge">📌 What I would do next</span>
+          <h4>The backlog I left behind</h4>
+          <p>Mapping the whole platform left me with a list of UX inconsistencies outside this project's scope. Some small, some structural. That is the work I would most want to pick up — once you have seen the whole system, you cannot un-see where its seams are.</p>
+        </div>`
+    }
+    ],
+    grade:{
+      grade:'A−', label:'My own take',
+      title:'A solution-shaped brief went in. A reframed problem came back.',
+      body:'A failure mode caught before it could ship, a deliberate reduction in flexibility for the sake of coherence, and a flow architecture that finally accounts for how people actually use the product. Marked down only because none of it is live yet — until it ships, this is a well-argued hypothesis.',
+      tactics:[
+        {label:'Error Prevention', hot:true},
+        {label:'Progressive Disclosure'},
+        {label:"Hick's Law"},
+        {label:'User Control & Freedom', hot:true},
+        {label:'Recognition Over Recall'},
+        {label:'Least Astonishment'}
+      ]
+    }
+  },
+  {
+    label:'FIRSTTRAIL', cover:'fg-b', chip:'Self-Initiated Venture ϟ Teardown',
+    title:'Where knowledge is applied and learning becomes <span class="hl">experience.</span>',
+    lede:'4 years in college, Lakhs in debt and still no clue what to do to make a living!',
+    role:'Founder & Product Designer', time:'Ongoing', team:'Self-initiated',
+    status:'Concept — in validation',
+    coverHtml:`
+      <div style="text-align:center;padding:14px 20px">
+        <div style="font-family:var(--display);font-size:clamp(38px,6vw,74px);line-height:1;letter-spacing:-.02em;color:var(--cream)">FIRSTTRAIL</div>
+        <div style="display:inline-block;margin-top:18px;background:var(--cream);border:1.5px solid var(--ink);border-radius:100px;padding:9px 20px;font-weight:700;font-size:13px">
+          Where knowledge is applied and learning becomes experience.
+        </div>
+      </div>`,
+    scenes:[
+    {
+      c:'sc-red', face:'worried', t:'Four years. Lakhs in debt. No clue.', tag:'The hook',
+      say:`<p>4 years in college, Lakhs in debt and still <b>no clue what to do to make a living!</b></p>
+           <p>I was there. Millions still are.</p>`,
+      stage:`
+        <div class="statrow">
+          <div class="stat-tile st-red"><div class="st-n">4 yrs</div><div class="st-l">of study</div></div>
+          <div class="stat-tile st-red"><div class="st-n">₹ lakhs</div><div class="st-l">of debt</div></div>
+          <div class="stat-tile st-red"><div class="st-n">0</div><div class="st-l">clarity on what comes next</div></div>
+        </div>`,
+      why:`<div class="verdict bad"><span class="vi">✕</span><div>The transaction students signed up for — time and money in, a career out — quietly stopped clearing.</div></div>`
+    },
+    {
+      c:'sc-orange', face:'neutral', t:'The promise they enrolled for.', tag:'Expectation',
+      say:`<p>Students join college <b>believing they will land a job!</b></p>
+           <p>The one's with connections and hold land jobs while the ones who excelled in classrooms are still struggling to find their path.</p>
+           <p>They feel defeated and underconfident.</p>`,
+      stage:`
+        <div class="forks">
+          <div class="fork"><span class="ft" style="background:var(--green);color:#fff">Connections</span> Lands the job</div>
+          <div class="fork"><span class="ft" style="background:var(--red);color:#fff">Top of the class</span> Still searching</div>
+        </div>
+        <div class="dev-cap">Merit and outcome have come apart</div>`,
+      why:`<div class="principle">
+          <span class="pr-badge">📌 What this costs</span>
+          <h4>Confidence, not just placement</h4>
+          <p>The students who did exactly what the system asked of them are the ones most shaken when it fails to pay out. That is a confidence problem before it is an employment problem.</p>
+        </div>`
+    },
+    {
+      c:'sc-yellow', face:'surprised', t:'Everyone thinks they are ready.', tag:'The readiness gap',
+      say:`<p>89% of educators say students are workforce-ready, yet <b>48% of graduates feel unprepared</b> to even apply for entry-level jobs.</p>
+           <p><em>Same cohort. Opposite sides of the desk.</em></p>`,
+      stage:`
+        <div class="viz">
+          <div class="viz-title">The readiness gap</div>
+          <div class="viz-sub">Two measures of the same cohort</div>
+          <div class="gv-row">
+            <div><span class="gv-label">Educators who say students are workforce-ready</span>
+              <div class="gv-track"><span class="gv-fill claim" style="width:89%"></span></div></div>
+            <div class="gv-val">89%</div>
+          </div>
+          <div class="gv-row">
+            <div><span class="gv-label">Graduates who feel unprepared to even apply</span>
+              <div class="gv-track"><span class="gv-fill reality" style="width:48%"></span></div></div>
+            <div class="gv-val">48%</div>
+          </div>
+          <div class="gv-legend">
+          <span><i class="claim"></i> What institutions report or provide</span>
+          <span><i class="reality"></i> What students actually experience</span>
+        </div>
+        </div>`,
+      why:`<div class="principle">
+          <span class="pr-badge">📌 Why it persists</span>
+          <h4>Nobody is measuring the same thing</h4>
+          <p>Institutions measure completion. Students measure how they feel walking into an interview. Neither side sees the other's number, so neither side knows the gap exists.</p>
+        </div>`
+    },
+    {
+      c:'sc-cream', face:'thinking', t:'Taught confidently. Taught the wrong thing.', tag:'Skills mismatch',
+      say:`<p>Employers want practical, job-specific skills; educators emphasise soft skills.</p>
+           <p><b>56% of unprepared grads</b> say job-specific skills are their biggest gap.</p>`,
+      stage:`
+        <div class="statrow">
+          <div class="stat-tile st-orange"><div class="st-n">56%</div><div class="st-l">of unprepared grads say job-specific skills are their biggest gap</div></div>
+        </div>
+        <div class="forks">
+          <div class="fork"><span class="ft" style="background:var(--blue);color:#fff">Educators teach</span> Soft skills, theory</div>
+          <div class="fork"><span class="ft" style="background:var(--orange);color:#fff">Employers want</span> Practical, job-specific skill</div>
+        </div>`,
+      why:`<div class="verdict bad"><span class="vi">✕</span><div>Both sides are working hard. They are just optimising for different outputs, and the student absorbs the difference.</div></div>`
+    },
+    {
+      c:'sc-red', face:'worried', t:'So they stop applying.', tag:'The confidence collapse',
+      say:`<p>53% didn't apply to entry-level jobs because they felt underqualified — <b>up from 48%</b>.</p>
+           <p>77% think employers expect more experience than is reasonable.</p>
+           <p>91% have felt pressure to accept any available job rather than one that fits them.</p>`,
+      stage:`
+        <div class="statrow">
+          <div class="stat-tile st-red"><div class="st-n">53%</div><div class="st-l">didn't apply — felt underqualified (up from 48%)</div></div>
+          <div class="stat-tile st-red"><div class="st-n">77%</div><div class="st-l">think employers expect more experience than is reasonable</div></div>
+          <div class="stat-tile st-red"><div class="st-n">91%</div><div class="st-l">felt pressure to accept any job rather than one that fits</div></div>
+        </div>`,
+      why:`<div class="principle">
+          <span class="pr-badge">📌 Principle</span>
+          <h4>Self-selection out</h4>
+          <p>The damage is not rejection — it is the application never sent. By the time a student is filtering themselves out of roles they could do, no amount of employer-side fixing reaches them.</p>
+        </div>`
+    },
+    {
+      c:'sc-purple', face:'surprised', t:'And the ground is moving.', tag:'AI disruption',
+      say:`<p>Employment for 22–25-year-olds in highly AI-exposed jobs is <b>~19% below trend</b> — driven mainly by fewer hires, not layoffs.</p>
+           <p>58% of the Class of 2026 say they need stronger AI skills. Only 28% say their program meaningfully integrated AI.</p>`,
+      stage:`
+        <div class="viz">
+          <div class="viz-title">The AI skills gap</div>
+          <div class="viz-sub">What the Class of 2026 needs vs. what their programmes delivered</div>
+          <div class="gv-row">
+            <div><span class="gv-label">Say they need stronger AI skills</span>
+              <div class="gv-track"><span class="gv-fill reality" style="width:58%"></span></div></div>
+            <div class="gv-val">58%</div>
+          </div>
+          <div class="gv-row">
+            <div><span class="gv-label">Say their program meaningfully integrated AI</span>
+              <div class="gv-track"><span class="gv-fill claim" style="width:28%"></span></div></div>
+            <div class="gv-val">28%</div>
+          </div>
+          <div class="gv-legend">
+          <span><i class="claim"></i> What institutions report or provide</span>
+          <span><i class="reality"></i> What students actually experience</span>
+        </div>
+        </div>
+        <div class="statrow">
+          <div class="stat-tile st-purple"><div class="st-n">~19%</div><div class="st-l">below trend — employment for 22–25s in AI-exposed jobs</div></div>
+          <div class="stat-tile st-purple"><div class="st-n">39%</div><div class="st-l">of core skills will change by 2030</div></div>
+        </div>`,
+      why:`<div class="verdict bad"><span class="vi">✕</span><div>The entry rung is being removed faster than curricula can be rewritten. A four-year degree now outlives the skills it was built on.</div></div>`
+    },
+    {
+      c:'sc-blue', face:'thinking', t:'Entry-level now requires experience.', tag:'The paradox',
+      say:`<p>Universities pass on knowledge in theories but industry expects people with <b>experience applying</b> the learnt knowledge.</p>
+           <p>That is the whole catch, in one sentence.</p>`,
+      stage:`
+        <div class="device">
+          <div class="dev-bar"><i></i><i></i><i></i><span>industry view</span></div>
+          <div class="dev-screen">
+            <div class="pcard"><span class="pn">“</span><div class="pl"><b style="font-size:12.5px;line-height:1.5">A Bayer India HR head says freshers struggle with real-world problem-solving and critical thinking due to over-reliance on theory.</b></div></div>
+          </div>
+        </div>
+        <div class="statrow">
+          <div class="stat-tile st-blue"><div class="st-n">85.8%</div><div class="st-l">of recruiters rate years of experience as very or extremely valuable</div></div>
+          <div class="stat-tile st-blue"><div class="st-n">35%</div><div class="st-l">of "entry-level" roles required 3+ years of experience</div></div>
+          <div class="stat-tile st-red"><div class="st-n">~20%</div><div class="st-l">less pay for "entry-level" roles needing 2+ years, across 3M+ postings</div></div>
+        </div>`,
+      why:`<div class="principle">
+          <span class="pr-badge">📌 The catch</span>
+          <h4>You need the job to get the job</h4>
+          <p>When "entry-level" is redefined to require three years, the only ladder left runs through people you already know. That is precisely the advantage the students without connections do not have.</p>
+        </div>`
+    },
+    {
+      c:'sc-ink', face:'worried', faceColor:'#F7AC1B', t:'And then the trap closes.', tag:'The long shadow',
+      say:`<p>52% of graduates are underemployed a year after graduating.</p>
+           <p><b>73% of those who start underemployed are still underemployed ten years later.</b></p>
+           <p><em>The first job is not a first step. It is a sorting hat.</em></p>`,
+      stage:`
+        <div class="trapviz">
+          <div class="trap-stage"><div class="ts-n">52%</div><div class="ts-l">underemployed a year after graduating</div></div>
+          <div class="trap-arrow">→</div>
+          <div class="trap-stage dark"><div class="ts-n">73%</div><div class="ts-l">of them are still underemployed 10 years later</div></div>
+        </div>`,
+      why:`<div class="verdict bad"><span class="vi">✕</span><div>A bad first match is not a bad year. It compounds for a decade — which is why the intervention has to happen <b>before</b> the first job, not after.</div></div>`
+    },
+    {
+      c:'sc-orange', face:'thinking', t:'See the gap?', tag:'The thesis',
+      say:`<p>See the gap?</p>
+           <p>I was there, and <b>millions are still stuck</b>.</p>
+           <p>That is why, I had to build —</p>`,
+      stage:`
+        <div class="forks">
+          <div class="fork"><span class="ft" style="background:var(--blue);color:#fff">University gives</span> Knowledge, in theory</div>
+          <div class="fork"><span class="ft" style="background:var(--red);color:#fff">Industry expects</span> Experience applying it</div>
+          <div class="fork" style="background:var(--yellow)"><span class="ft" style="background:var(--ink);color:var(--cream)">Nobody owns</span> The bridge between them</div>
+        </div>`,
+      why:`<div class="principle">
+          <span class="pr-badge">📌 The opening</span>
+          <h4>The bridge is unowned</h4>
+          <p>Universities are not incentivised to build it and employers will not pay to train before hiring. That unowned middle is the product.</p>
+        </div>`
+    },
+    {
+      c:'sc-green', face:'aha', t:'Introducing FIRSTTRAIL.', tag:'The product',
+      say:`<p>Introducing <b>"FIRSTTRAIL"</b></p>
+           <p>Where knowledge is applied and learning becomes experience.</p>
+           <p><em>Not a roleplay tool — a work simulation with a mentor beside you.</em></p>`,
+      stage:`
+        <div class="device">
+          <div class="dev-bar"><i></i><i></i><i></i><span>firsttrail</span></div>
+          <div class="dev-screen" style="align-items:center;padding:36px 16px;gap:14px">
+            <div style="font-family:var(--display);font-size:clamp(26px,3.6vw,44px);line-height:1">FIRSTTRAIL</div>
+            <div class="dev-cap" style="background:var(--yellow)">Where knowledge is applied and learning becomes experience</div>
+          </div>
+        </div>`,
+      why:`<div class="verdict good"><span class="vi">✓</span><div>A safe place to find out what you are suited for, and to get industry-grade exposure, <b>before it counts</b>.</div></div>`
+    },
+    {
+      c:'sc-yellow', face:'happy', t:'What it actually does.', tag:'Offerings',
+      say:`<p>Five things, in order of how a student meets them.</p>
+           <p>The last one is the point: <b>choose a path that suits their abilities and skills and head on with confidence.</b></p>`,
+      stage:`
+        <div class="offergrid">
+          <div class="offer-card oc-1"><span class="oc-n">1</span><p>Explore roles before committing to one path with interactive role simulations with real work.</p></div>
+          <div class="offer-card oc-2"><span class="oc-n">2</span><p>Build confidence by presenting work with the team and getting in depth feedback.</p></div>
+          <div class="offer-card oc-3"><span class="oc-n">3</span><p>Get continuous guidance from a personal coach and stay updated on the trends.</p></div>
+          <div class="offer-card oc-4"><span class="oc-n">4</span><p>Every trail documented into a portfolio with proof.</p></div>
+          <div class="offer-card oc-5"><span class="oc-n">5</span><p>Choose a path that suits their abilities and skills and head on with confidence.</p></div>
+        </div>`,
+      why:`<div class="principle">
+          <span class="pr-badge">📌 Design stance</span>
+          <h4>Supplement, never replace</h4>
+          <p>Students keep working on their own projects. The platform is the safe room they come back to — to rehearse, to be reviewed, and eventually to outgrow.</p>
+        </div>`
+    },
+    {
+      c:'sc-blue', face:'happy', t:'And the student always wins.', tag:'The flywheel',
+      say:`<p>Let students get into a path where their skills are best suited and where their passion lies.</p>
+           <p>And let knowledge be passed on…</p>
+           <p>So educators can make informed decisions regarding curriculum based on students performance while the industry gets workforce that can do the job!</p>`,
+      stage:`
+        <div class="winstri">
+          <div class="win-card"><span class="wc-tag wc-student">Student</span><p>Gets into a path where their skills are best suited and where their passion lies.</p></div>
+          <div class="win-card"><span class="wc-tag wc-edu">Educator</span><p>Makes informed decisions regarding curriculum based on students performance.</p></div>
+          <div class="win-card"><span class="wc-tag wc-industry">Industry</span><p>Gets a workforce that can do the job.</p></div>
+        </div>`,
+      why:`<div class="verdict good"><span class="vi">✓</span><div><b>And the student always wins!</b> Every other party only benefits downstream of that.</div></div>`
+    },
+    {
+      c:'sc-purple', face:'neutral', t:'How I will know it worked.', tag:'Success metrics',
+      say:`<p>The product succeeds for a student when they leave with <b>direction</b>, the <b>confidence</b> to act on it, and the <b>readiness</b> to engage the industry directly.</p>
+           <p>Measured by survey and interview — not by time spent in the app.</p>`,
+      stage:`
+        <div class="metricgrid">
+          <div class="metric-row"><div class="mr-name">Role Clarity</div>
+            <div class="mr-how">Student can name the role they want, explain why, and name the roles they've ruled out.<em>Survey before and after — % who move from unclear to clear</em></div></div>
+          <div class="metric-row"><div class="mr-name">Increased Confidence</div>
+            <div class="mr-how">Student believes they can perform in that role.<em>Self-rated confidence, before and after — % showing an increase</em></div></div>
+          <div class="metric-row"><div class="mr-name">Industry Readiness</div>
+            <div class="mr-how">Student understands what the work actually involves and can meet its expectations.<em>Survey and interview, corroborated by employer feedback</em></div></div>
+          <div class="metric-row"><div class="mr-name">Employment</div>
+            <div class="mr-how">Student secures a job in the role they identified.<em>Placement records and follow-up interview</em></div></div>
+        </div>`,
+      why:`<div class="principle">
+          <span class="pr-badge">📌 Deliberate omission</span>
+          <h4>No engagement metrics</h4>
+          <p>Time-in-app would reward a student who stays stuck. The first three measures are read within the programme; the fourth confirms whether they held true.</p>
+        </div>`
+    }
+    ],
+    grade:{
+      grade:'0→1', label:'Stage',
+      title:'A gap I lived through, costed out in other people’s data.',
+      body:'This is a concept in validation, not a shipped product — so the honest claim is the argument, not the outcome. What I can defend: the problem is evidenced from four directions, the product maps onto each one, and success is defined before a single screen was designed.',
+      tactics:[
+        {label:'Problem evidenced', hot:true},
+        {label:'Four stakeholders mapped'},
+        {label:'Success defined pre-build', hot:true},
+        {label:'Not yet validated with students'},
+        {label:'Sources pending citation'}
+      ]
+    }
+  },
+  {
+    label:'Analytics', cover:'fg-c', chip:'Analytics ϟ Case Study',
+    title:'Turning a wall of data into decisions people <span class="hl">trust.</span>',
+    lede:'The dashboard had 34 charts and answered none of the questions leadership actually asked. We designed backwards — from decisions to data.',
+    role:'Product Designer', time:'10 weeks', team:'PM, Data Engineer, 2 Engineers', platform:'Web Dashboard',
+    setting:`
+      <p>The analytics module was a feature-request graveyard: every chart someone had ever asked for, all rendered at once. Usage data told the real story — <b>users visited, scrolled, exported to Excel, and never came back.</b></p>
+      <p>The dashboard wasn't informing decisions; it was outsourcing them to spreadsheets.</p>
+      <div class="cs-figure fg-c"><div class="wire"><i></i><i></i></div><span class="fig-note">Fig 01 — The original 34-chart dashboard</span></div>
+    `,
+    friction:`
+      <p>Instead of asking users what charts they wanted, I asked what <b>decisions they made weekly</b> and what they needed to feel confident making them. Eight interviews later, 34 charts collapsed into 5 recurring decisions.</p>
+      <div class="callout">"I don't need more data. I need to know if this number is bad, and compared to what."</div>
+      <div class="insight-grid">
+        <div class="insight"><span class="i-num">Insight 01</span><h5>Context beats volume</h5><p>A number without a benchmark, trend, or threshold is decoration, not information.</p></div>
+        <div class="insight"><span class="i-num">Insight 02</span><h5>Trust needs provenance</h5><p>Users exported to Excel to check the math. The dashboard hid how numbers were computed.</p></div>
+        <div class="insight"><span class="i-num">Insight 03</span><h5>Decisions have rhythms</h5><p>Some questions are Monday questions; some are quarter-end. One layout served neither.</p></div>
+      </div>
+    `,
+    turn:`
+      <p>The reframe: <b>design the answers, not the charts.</b> The new IA organized the module around the five decisions, each opening with a plain-language verdict ("Pipeline is healthy, but conversion is slipping in segment B") backed by the evidence beneath it.</p>
+      <p>Every metric gained three companions: comparison, trend, and a tap-to-reveal "how this is calculated."</p>
+      <div class="cs-figure fg-d"><div class="wire"><i></i><i></i></div><span class="fig-note">Fig 02 — Decision-first information architecture</span></div>
+    `,
+    craft:`
+      <p>Data visualization lives or dies in the small choices. We built a restrained chart vocabulary — <b>four chart types, one accent color for "needs attention," and typography doing most of the hierarchy work.</b></p>
+      <p>Edge cases got first-class treatment: empty states that teach, loading states that preserve layout, and error states that say what to do next.</p>
+      <div class="cs-figure fg-c"><div class="wire"><i></i><i></i></div><span class="fig-note">Fig 03 — Final decision views &amp; chart system</span></div>
+    `,
+    outcome:`
+      <p>Within a quarter, the export-to-Excel workaround dropped sharply — the clearest signal that trust had moved back into the product.</p>
+      <div class="outcome-band">
+        <div class="outcome"><div class="o-n">2.7<small>×</small></div><div class="o-l">Weekly return visits</div></div>
+        <div class="outcome"><div class="o-n">−63<small>%</small></div><div class="o-l">Excel exports</div></div>
+        <div class="outcome"><div class="o-n">Top 3</div><div class="o-l">Feature in NPS mentions</div></div>
+      </div>
+      <p><b>What I'd do differently:</b> prototype with real (messy) data sooner. Clean sample data hid layout problems that only surfaced with 40-character customer names.</p>
+    `
+  }
+];
+
+/* ================= CASE STUDY LOGIC ================= */
+const caseView = document.getElementById('caseView');
+let currentCase = 0;
+
+const DEFAULT_COVER = `
+  <div class="mock">
+    <div style="height:9px;border-radius:100px;background:var(--ink);width:50%;margin-bottom:10px"></div>
+    <div style="width:100%;height:110px;border:1.5px dashed var(--ink);border-radius:10px;display:grid;grid-template-columns:1fr 2.3fr;gap:10px;padding:10px;background:#fff">
+      <i style="border:1.5px solid var(--ink);border-radius:7px;background:var(--cream)"></i>
+      <i style="border:1.5px solid var(--ink);border-radius:7px;background:var(--cream)"></i>
+    </div>
+  </div>`;
+
+/* ================= NARRATOR FACES ================= */
+const FACES = {
+  neutral:   { eyes:[[4,5],[4,6],[10,5],[10,6]],
+               mouth:[[5,9],[6,9],[7,9],[8,9],[9,9]] },
+  happy:     { eyes:[[4,5],[4,6],[10,5],[10,6]],
+               mouth:[[4,8],[5,9],[6,10],[7,10],[8,10],[9,9],[10,8]] },
+  surprised: { eyes:[[4,4],[5,4],[4,5],[5,5],[9,4],[10,4],[9,5],[10,5]],
+               mouth:[[6,9],[7,9],[8,9],[6,10],[8,10],[6,11],[7,11],[8,11]] },
+  thinking:  { eyes:[[3,5],[4,5],[5,5],[10,5],[10,6]],
+               mouth:[[5,10],[6,10],[7,9],[8,9],[9,10]] },
+  worried:   { eyes:[[4,5],[4,6],[10,5],[10,6]],
+               mouth:[[4,10],[5,9],[6,9],[7,9],[8,9],[9,9],[10,10]] },
+  aha:       { eyes:[[4,4],[5,4],[4,5],[5,5],[9,4],[10,4],[9,5],[10,5]],
+               mouth:[[4,8],[5,9],[6,10],[7,10],[8,10],[9,9],[10,8]] }
+};
+function pixelFace(expr, color){
+  const f = FACES[expr] || FACES.neutral;
+  const G = 15, C = 7, R = 6.1, ring = [];
+  for (let y = 0; y < G; y++) for (let x = 0; x < G; x++){
+    if (Math.abs(Math.hypot(x - C, y - C) - R) < 0.62) ring.push([x, y]);
+  }
+  const col = color || '#F2EDE2';
+  const rects = ring.concat(f.eyes, f.mouth)
+    .map(([x, y]) => `<rect x="${x}" y="${y}" width="0.94" height="0.94" fill="${col}"/>`).join('');
+  return `<svg viewBox="0 0 15 15" aria-hidden="true">${rects}</svg>`;
+}
+
+/* ================= SCENE RENDERER ================= */
+function renderScenes(scenes){
+  return scenes.map((s, i) => `
+    <section class="scene ${s.c || 'sc-cream'}">
+      <div class="scene-head">
+        <span class="sc-num">${String(i + 1).padStart(2, '0')}</span>
+        <h3>${s.t}</h3>
+        ${s.tag ? `<span class="sc-tag">${s.tag}</span>` : ''}
+      </div>
+      <div class="scene-grid">
+        <div class="narrator">
+          <div class="avatar">${pixelFace(s.face, s.faceColor)}</div>
+          <div class="bubble">${s.say}</div>
+        </div>
+        <div class="stage">${s.stage || ''}</div>
+        <div class="why">${s.why || ''}</div>
+      </div>
+    </section>`).join('');
+}
+function gradeCard(g){
+  if (!g) return '';
+  return `<div class="gradecard">
+    <div class="gbox"><b>${g.grade}</b><span>${g.label || 'MY TAKE'}</span></div>
+    <div>
+      <h3>${g.title}</h3>
+      <p>${g.body}</p>
+      <div class="tactics">${(g.tactics || []).map(t =>
+        `<span class="tactic${t.hot ? ' hot' : ''}">${t.label}</span>`).join('')}</div>
+    </div>
+  </div>`;
+}
+
+/* Chapters: a case may define its own, or use the default five-act shape. */
+function chaptersFor(c){
+  if (c.chapters) return c.chapters;
+  const out = [
+    { t:'The setting.',  c:'ch-1', h:c.setting },
+    { t:'The friction.', c:'ch-2', h:c.friction },
+    { t:'The turn.',     c:'ch-3', h:c.turn },
+    { t:'The craft.',    c:'ch-4', h:c.craft },
+    { t:'The outcome.',  c:'ch-5', h:c.outcome }
+  ];
+  if (c.bonus) out.push({ t:'Bonus — a UI exploration.', c:'ch-6', h:c.bonus });
+  return out;
+}
+
+function renderCase(i){
+  const c = cases[i];
+  currentCase = i;
+  document.getElementById('csNextTitle').innerHTML = cases[(i + 1) % cases.length].title;
+  const num = String(i+1).padStart(2,'0');
+  document.getElementById('csCrumbNum').textContent = num;
+  document.getElementById('csChip').textContent = c.chip;
+  document.getElementById('csTitle').innerHTML = c.title;
+  document.getElementById('csLede').textContent = c.lede;
+  document.getElementById('csRole').textContent = c.role;
+  document.getElementById('csTime').textContent = c.time;
+  document.getElementById('csTeam').textContent = c.team;
+  document.getElementById('csPlatform').textContent = c.status || c.platform || '—';
+  document.getElementById('csNda').style.display = c.nda ? 'flex' : 'none';
+  const cover = document.getElementById('csCover');
+  cover.className = 'cs-cover ' + c.cover;
+  document.getElementById('csCoverLabel').textContent = c.label;
+  document.getElementById('csCoverInner').innerHTML = c.coverHtml || DEFAULT_COVER;
+  if (c.scenes){
+    document.getElementById('csBody').innerHTML = renderScenes(c.scenes) + gradeCard(c.grade);
+    return;
+  }
+  document.getElementById('csBody').innerHTML = chaptersFor(c).map((ch, n) => `
+      <div class="cs-chapter">
+        <div class="chapter-banner ${ch.c}">
+          <span class="cn">${String(n+1).padStart(2,'0')}</span><h2>${ch.t}</h2><span class="dd">↓↓</span>
+        </div>
+        <div class="chapter-content">${ch.h}</div>
+      </div>`).join('');
+  document.getElementById('csNextTitle').innerHTML = cases[(i+1) % cases.length].title;
+}
+
+function openCase(i){
+  renderCase(i);
+  caseView.scrollTop = 0;
+  caseView.classList.add('open');
+  document.body.classList.add('cs-open');
+}
+function closeCase(){
+  caseView.classList.remove('open');
+  document.body.classList.remove('cs-open');
+}
+
+document.querySelectorAll('[data-case]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    openCase(parseInt(link.dataset.case, 10));
+  });
+});
+document.getElementById('backBtn').addEventListener('click', closeCase);
+document.getElementById('csBackBottom').addEventListener('click', e => { e.preventDefault(); closeCase(); });
+document.getElementById('csNextBtn').addEventListener('click', e => {
+  e.preventDefault();
+  openCase((currentCase + 1) % cases.length);
+});
+document.getElementById('csNextTitle').addEventListener('click', () => openCase((currentCase + 1) % cases.length));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && caseView.classList.contains('open')) closeCase();
+});
+
+/* reading progress */
+caseView.addEventListener('scroll', () => {
+  const bar = document.querySelector('#csProgress i');
+  if (!bar) return;
+  const max = caseView.scrollHeight - caseView.clientHeight;
+  bar.style.width = (max > 0 ? (caseView.scrollTop / max) * 100 : 0) + '%';
+}, {passive:true});
+</script>
+</body>
+</html>
